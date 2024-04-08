@@ -166,7 +166,7 @@ class login extends StatelessWidget {
             const Gap(40),
             GestureDetector(
               onTap: () {
-                Get.offNamed('/home');
+                Get.offNamed('/navigation');
               },
               child: Padding(
                 padding: const EdgeInsets.all(20.0),

@@ -60,8 +60,8 @@ class ProDeals extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Pro Deals",
-      // initialRoute: '/navigation',
-      initialRoute: '/',
+      initialRoute: '/navigation',
+      // initialRoute: '/',
       getPages: [
         GetPage(
           name: '/',

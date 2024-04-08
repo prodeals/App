@@ -15,13 +15,8 @@ class profile_page extends StatelessWidget {
     double wid = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Get.back();
-          },
-        ),
-        title: Text('Profile'),
+        title: const Text('Profile'),
+        centerTitle: true,
         backgroundColor: AppColor.primary,
       ),
       body: SingleChildScrollView(

@@ -4,10 +4,12 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../utils/colors.dart';
 import '../widget/my_button.dart';
 import '../widget/my_textfield.dart';
 
@@ -43,27 +45,41 @@ class _create_businessState extends State<create_business> {
           child: Column(
             children: [
               const Gap(25),
-              Stack(
-                children: [
-                  _image != null
-                      ? CircleAvatar(
-                          radius: 40,
-                          backgroundImage: MemoryImage(_image!),
-                        )
-                      : const CircleAvatar(
-                          radius: 40,
-                        ),
-                  if (_image == null)
+              SizedBox(
+                height: 110,
+                width: 110,
+                child: Stack(
+                  children: [
+                    Center(
+                      child: CircleAvatar(
+                        radius: 50,
+                      ),
+                    ),
                     Positioned(
-                      bottom: 3,
-                      right: 0,
-                      child: GestureDetector(
-                          onTap: () {
-                            imagepicker(context);
-                          },
-                          child: Image.asset("assets/image/Group 3747.png")),
-                    )
-                ],
+                      bottom: -1,
+                      right: -1,
+                      child: Container(
+                        padding: EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                          color: AppColor.white,
+                          shape: BoxShape.circle,
+                        ),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.edit,
+                            color: AppColor.white,
+                            size: 20,
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(AppColor.black300),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const Gap(20),
               const Text(
@@ -76,11 +92,11 @@ class _create_businessState extends State<create_business> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
                       'Full Name',
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: AppColor.gray),
                     ),
                   ),
                   const Gap(10),
