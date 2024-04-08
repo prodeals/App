@@ -38,6 +38,25 @@ import 'android/successfully.dart';
 import 'android/suport_details.dart';
 import 'android/upload_store.dart';
 import 'firebase_options.dart';
+import 'ios/add_address.dart';
+import 'ios/confirm_page.dart';
+import 'ios/edit_profile.dart';
+import 'ios/intro.dart';
+import 'ios/ios_Ans.dart';
+import 'ios/ios_address_page.dart';
+import 'ios/ios_cart.dart';
+import 'ios/ios_category.dart';
+import 'ios/ios_filter.dart';
+import 'ios/ios_home_page.dart';
+import 'ios/ios_login.dart';
+import 'ios/ios_otp.dart';
+import 'ios/ios_profile.dart';
+import 'ios/ios_promocode.dart';
+import 'ios/ios_qr.dart';
+import 'ios/ios_sign_up.dart';
+import 'ios/ios_support_center.dart';
+import 'ios/navigation.dart';
+import 'ios/scan_qr.dart';
 import 'splash.dart';
 import 'utils/constunt.dart';
 
@@ -206,100 +225,100 @@ class ProDeals extends StatelessWidget {
         ),
       ],
     );
-    // return GetCupertinoApp(
-    //   localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-    //     DefaultMaterialLocalizations.delegate,
-    //     DefaultWidgetsLocalizations.delegate,
-    //   ],
-    //   debugShowCheckedModeBanner: false,
-    //   title: "Pro Deals",
-    //   initialRoute: '/',
-    //   getPages: [
-    //     GetPage(
-    //       name: '/',
-    //       page: () => const splash(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_home',
-    //       page: () => const ios_home(),
-    //     ),
-    //     GetPage(
-    //       name: '/intro',
-    //       page: () => const ios_intro(),
-    //     ),
-    //     GetPage(
-    //       name: '/login',
-    //       page: () => ios_login(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_sign_up',
-    //       page: () => ios_sign_up(),
-    //     ),
-    //     GetPage(
-    //       name: '/forgot',
-    //       page: () => const forgot_pass(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_otp',
-    //       page: () => ios_otp(),
-    //     ),
-    //     GetPage(
-    //       name: '/confirm',
-    //       page: () => const confirm(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_profile',
-    //       page: () => const ios_profile(),
-    //     ),
-    //     GetPage(
-    //       name: '/navigation',
-    //       page: () => const ios_navigation(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_filter',
-    //       page: () => const ios_filter(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_category',
-    //       page: () => const ios_category(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_promocode',
-    //       page: () => const ios_promocode(),
-    //     ),
-    //     GetPage(
-    //       name: '/edit_profile',
-    //       page: () => const ios_edit_profile(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_cart',
-    //       page: () => const ios_cart(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_support',
-    //       page: () => const ios_support(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_Ans',
-    //       page: () => const ios_Ans(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_qr',
-    //       page: () => const ios_qr(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_scan_qr',
-    //       page: () => const ios_scan_qr(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_address',
-    //       page: () => const ios_Address(),
-    //     ),
-    //     GetPage(
-    //       name: '/ios_add_address',
-    //       page: () => const ios_add_address(),
-    //     ),
-    //   ],
-    // );
+    return GetCupertinoApp(
+      localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+        DefaultMaterialLocalizations.delegate,
+        DefaultWidgetsLocalizations.delegate,
+      ],
+      debugShowCheckedModeBanner: false,
+      title: "Pro Deals",
+      initialRoute: '/',
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => const splash(),
+        ),
+        GetPage(
+          name: '/ios_home',
+          page: () => const ios_home(),
+        ),
+        GetPage(
+          name: '/intro',
+          page: () => const ios_intro(),
+        ),
+        GetPage(
+          name: '/login',
+          page: () => ios_login(),
+        ),
+        GetPage(
+          name: '/ios_sign_up',
+          page: () => ios_sign_up(),
+        ),
+        GetPage(
+          name: '/forgot',
+          page: () => const forgot_pass(),
+        ),
+        GetPage(
+          name: '/ios_otp',
+          page: () => ios_otp(),
+        ),
+        GetPage(
+          name: '/confirm',
+          page: () => const confirm(),
+        ),
+        GetPage(
+          name: '/ios_profile',
+          page: () => const ios_profile(),
+        ),
+        GetPage(
+          name: '/navigation',
+          page: () => const ios_navigation(),
+        ),
+        GetPage(
+          name: '/ios_filter',
+          page: () => const ios_filter(),
+        ),
+        GetPage(
+          name: '/ios_category',
+          page: () => const ios_category(),
+        ),
+        GetPage(
+          name: '/ios_promocode',
+          page: () => const ios_promocode(),
+        ),
+        GetPage(
+          name: '/edit_profile',
+          page: () => const ios_edit_profile(),
+        ),
+        GetPage(
+          name: '/ios_cart',
+          page: () => const ios_cart(),
+        ),
+        GetPage(
+          name: '/ios_support',
+          page: () => const ios_support(),
+        ),
+        GetPage(
+          name: '/ios_Ans',
+          page: () => const ios_Ans(),
+        ),
+        GetPage(
+          name: '/ios_qr',
+          page: () => const ios_qr(),
+        ),
+        GetPage(
+          name: '/ios_scan_qr',
+          page: () => const ios_scan_qr(),
+        ),
+        GetPage(
+          name: '/ios_address',
+          page: () => const ios_Address(),
+        ),
+        GetPage(
+          name: '/ios_add_address',
+          page: () => const ios_add_address(),
+        ),
+      ],
+    );
   }
 }

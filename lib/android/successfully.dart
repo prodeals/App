@@ -49,8 +49,7 @@ class _successfullyState extends State<successfully> {
             Gap(40),
             GestureDetector(
               onTap: () {
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (_) => successfully()));
+                Get.toNamed('/deshborad');
               },
               child: Container(
                 height: 50,
