@@ -57,3 +57,10 @@ List Dessert = [
 ];
 
 bool isfood = true;
+
+List orders = [
+  {'name': "Delicious Burger", 'prize': 30, 'quantity': 1},
+  {'name': "Samosa", 'prize': 10, 'quantity': 2},
+  {'name': "Strawberry Cake", 'prize': 180, 'quantity': 1},
+  {'name': "Delicious Burger", 'prize': 10, 'quantity': 1},
+];

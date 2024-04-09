@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pro_deals1/ios/promocode_details.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'android/Active_offers.dart';
@@ -19,6 +20,7 @@ import 'android/Support.dart';
 import 'android/Verify_identify.dart';
 import 'android/add_address.dart';
 import 'android/categories.dart';
+import 'android/coupons.dart';
 import 'android/create_business.dart';
 import 'android/dashboard.dart';
 import 'android/details_page.dart';
@@ -56,6 +58,7 @@ import 'ios/ios_qr.dart';
 import 'ios/ios_sign_up.dart';
 import 'ios/ios_support_center.dart';
 import 'ios/navigation.dart';
+import 'ios/promocode.dart';
 import 'ios/scan_qr.dart';
 import 'splash.dart';
 import 'utils/constunt.dart';
@@ -79,7 +82,7 @@ class ProDeals extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Pro Deals",
-      initialRoute: '/navigation',
+      initialRoute: '/Coupons',
       // initialRoute: '/',
       getPages: [
         GetPage(
@@ -223,6 +226,10 @@ class ProDeals extends StatelessWidget {
           name: '/order_deshboard',
           page: () => const order_deshboard(),
         ),
+        GetPage(
+          name: '/Coupons',
+          page: () => const Coupons(),
+        ),
       ],
     );
     return GetCupertinoApp(
@@ -232,11 +239,20 @@ class ProDeals extends StatelessWidget {
       ],
       debugShowCheckedModeBanner: false,
       title: "Pro Deals",
-      initialRoute: '/',
+      initialRoute: '/promocode',
+      // initialRoute: '/',
       getPages: [
         GetPage(
           name: '/',
           page: () => const splash(),
+        ),
+        GetPage(
+          name: '/promocode',
+          page: () => const promocode(),
+        ),
+        GetPage(
+          name: '/promocodeDetails',
+          page: () => const promocode_details(),
         ),
         GetPage(
           name: '/ios_home',
