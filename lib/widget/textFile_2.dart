@@ -1,18 +1,20 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:gap/gap.dart';
 
 class text_filed extends StatelessWidget {
   final TextEditingController controller;
+
   const text_filed({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Container(
-            width: 150,
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Row(
+        children: [
+          Expanded(
             child: TextField(
               maxLines: 1,
               controller: controller,
@@ -26,12 +28,8 @@ class text_filed extends StatelessWidget {
               ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Container(
-            // height: 55,
-            width: 150,
+          Gap(20),
+          Expanded(
             child: TextField(
               maxLines: 1,
               controller: controller,
@@ -45,8 +43,8 @@ class text_filed extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

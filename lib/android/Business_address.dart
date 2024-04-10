@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:pro_deals1/utils/colors.dart';
 
 import '../widget/my_button.dart';
 import '../widget/my_textfield.dart';
@@ -27,6 +28,8 @@ class _B_AddressState extends State<B_Address> {
 
   @override
   Widget build(BuildContext context) {
+    double hit = MediaQuery.of(context).size.height;
+    double wid = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -40,36 +43,32 @@ class _B_AddressState extends State<B_Address> {
           },
           icon: const Icon(Icons.arrow_back),
         ),
-        backgroundColor: const Color.fromARGB(255, 214, 170, 38),
+        backgroundColor: AppColor.primary,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Gap(25),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 150),
-              child: Text(
-                "Address",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      body: Container(
+        height: hit,
+        width: wid,
+        padding: const EdgeInsets.all(16),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Gap(25),
+              const Center(
+                child: Text(
+                  "Address",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              const Gap(20),
+              const Text(
                 'Country',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-            ),
-            Gap(10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
+              const Gap(10),
+              Container(
                 height: 60,
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
@@ -78,10 +77,10 @@ class _B_AddressState extends State<B_Address> {
                 ),
                 child: DropdownButton<String>(
                   value: countryValue,
-                  icon: Icon(Icons.keyboard_arrow_down),
+                  icon: const Icon(Icons.keyboard_arrow_down),
                   isExpanded: true,
-                  underline: SizedBox(),
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  underline: const SizedBox(),
+                  style: const TextStyle(color: Colors.black, fontSize: 18),
                   onChanged: (newValue) {
                     setState(() {
                       countryValue = newValue;
@@ -95,23 +94,15 @@ class _B_AddressState extends State<B_Address> {
                   }).toList(),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              const Gap(20),
+              const Text(
                 'State',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-            ),
-            Gap(10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
+              const Gap(10),
+              Container(
                 height: 60,
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
@@ -120,10 +111,10 @@ class _B_AddressState extends State<B_Address> {
                 ),
                 child: DropdownButton<String>(
                   value: stateValue,
-                  icon: Icon(Icons.keyboard_arrow_down),
+                  icon: const Icon(Icons.keyboard_arrow_down),
                   isExpanded: true,
-                  underline: SizedBox(),
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  underline: const SizedBox(),
+                  style: const TextStyle(color: Colors.black, fontSize: 18),
                   onChanged: (newValue) {
                     setState(() {
                       stateValue = newValue;
@@ -137,23 +128,15 @@ class _B_AddressState extends State<B_Address> {
                   }).toList(),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              const Gap(20),
+              Text(
                 'City',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-            ),
-            Gap(10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
+              const Gap(10),
+              Container(
                 height: 60,
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
@@ -162,10 +145,10 @@ class _B_AddressState extends State<B_Address> {
                 ),
                 child: DropdownButton<String>(
                   value: cityValue,
-                  icon: Icon(Icons.keyboard_arrow_down),
+                  icon: const Icon(Icons.keyboard_arrow_down),
                   isExpanded: true,
-                  underline: SizedBox(),
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  underline: const SizedBox(),
+                  style: const TextStyle(color: Colors.black, fontSize: 18),
                   onChanged: (newValue) {
                     setState(() {
                       cityValue = newValue;
@@ -179,45 +162,39 @@ class _B_AddressState extends State<B_Address> {
                   }).toList(),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
                 'PinCode',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-            ),
-            Gap(10),
-            My_TextFiled(controller: _pincodeController),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              const Gap(10),
+              My_TextFiled(controller: _pincodeController),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
                 'Address',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-            ),
-            Gap(10),
-            My_TextFiled(controller: _addressController),
-            const Gap(30),
-            Padding(
-              padding: EdgeInsets.only(left: 240),
-              child: MyButton(
-                onTap: () {
-                  Get.toNamed('/Profession_details');
-                },
-              ),
-            )
-          ],
+              const Gap(10),
+              My_TextFiled(controller: _addressController),
+              const Gap(30),
+              Padding(
+                padding: const EdgeInsets.only(left: 240),
+                child: MyButton(
+                  onTap: () {
+                    Get.toNamed('/Profession_details');
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

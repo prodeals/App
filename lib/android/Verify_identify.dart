@@ -14,6 +14,8 @@ class verify extends StatefulWidget {
 class _verifyState extends State<verify> {
   @override
   Widget build(BuildContext context) {
+    double hit = MediaQuery.of(context).size.height;
+    double wid = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -23,13 +25,16 @@ class _verifyState extends State<verify> {
         centerTitle: true,
         leading: IconButton(
             onPressed: () {
-              Get.toNamed('/upload_store');
+              Get.back();
             },
             icon: const Icon(Icons.arrow_back)),
         backgroundColor: const Color.fromARGB(255, 214, 170, 38),
       ),
-      body: SingleChildScrollView(
-        child: Center(
+      body: Container(
+        height: hit,
+        width: wid,
+        padding: EdgeInsets.all(16),
+        child: SingleChildScrollView(
           child: Column(
             children: [
               const Gap(25),

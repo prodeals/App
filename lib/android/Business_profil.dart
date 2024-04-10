@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +17,7 @@ class Profession_Profile extends StatefulWidget {
 }
 
 final TextEditingController _areaController = TextEditingController();
-// final TextEditingController _openingController = TextEditingController();
+final TextEditingController _openingController = TextEditingController();
 final TextEditingController _closetimeController = TextEditingController();
 final TextEditingController _closedaysController = TextEditingController();
 
@@ -33,6 +35,8 @@ class _Profession_ProfileState extends State<Profession_Profile> {
 
   @override
   Widget build(BuildContext context) {
+    double hit = MediaQuery.of(context).size.height;
+    double wid = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -47,78 +51,76 @@ class _Profession_ProfileState extends State<Profession_Profile> {
             icon: const Icon(Icons.arrow_back)),
         backgroundColor: const Color.fromARGB(255, 214, 170, 38),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Gap(25),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50),
-              child: Text(
-                "Business / Profession Profile",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      body: Container(
+        height: hit,
+        width: wid,
+        padding: const EdgeInsets.all(16),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Gap(25),
+              Center(
+                child: Text(
+                  "Business / Profession Profile",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              const Gap(20),
+              Text(
                 'Area in square feet',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-            ),
-            const Gap(10),
-            My_TextFiled(controller: _areaController),
-            const SizedBox(
-              height: 20,
-            ),
-            const Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25),
-                  child: Text(
-                    'Opening Time',
-                    style: TextStyle(
-                      color: Colors.grey,
+              const Gap(10),
+              My_TextFiled(controller: _areaController),
+              const Gap(20),
+              Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          'Opening Time',
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        const Gap(10),
+                        My_TextFiled(controller: _openingController),
+                      ],
+                      crossAxisAlignment: CrossAxisAlignment.start,
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 70),
-                  child: Text(
-                    'Closing Time',
-                    style: TextStyle(
-                      color: Colors.grey,
+                  const Gap(20),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          'Closing Time',
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        const Gap(10),
+                        My_TextFiled(controller: _closetimeController),
+                      ],
+                      crossAxisAlignment: CrossAxisAlignment.start,
                     ),
                   ),
-                ),
-              ],
-            ),
-            const Gap(10),
-            Row(
-              children: [
-                text_filed(controller: _closetimeController),
-              ],
-            ),
-            const Gap(20),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+                ],
+              ),
+              const Gap(20),
+              Text(
                 'Close Days',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-            ),
-            const Gap(10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
+              const Gap(10),
+              Container(
                 height: 60,
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
@@ -144,29 +146,26 @@ class _Profession_ProfileState extends State<Profession_Profile> {
                   }).toList(),
                 ),
               ),
-            ),
-            const Gap(15),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              const Gap(15),
+              Text(
                 'Description',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-            ),
-            const Gap(10),
-            textfield(controller: _areaController),
-            const Gap(15),
-            Padding(
-              padding: const EdgeInsets.only(left: 240),
-              child: MyButton(
-                onTap: () {
-                  Get.toNamed('/upload_store');
-                },
-              ),
-            )
-          ],
+              const Gap(10),
+              textfield(controller: _areaController),
+              const Gap(15),
+              Align(
+                alignment: Alignment.centerRight,
+                child: MyButton(
+                  onTap: () {
+                    Get.toNamed('/upload_store');
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

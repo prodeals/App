@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Widget drawer(double hit, double wid) {
@@ -10,7 +11,7 @@ Widget drawer(double hit, double wid) {
     width: wid / 1.3,
     decoration: const BoxDecoration(
       image: DecorationImage(
-        image: AssetImage('assets/image/image.png'),
+        image: AssetImage('assets/images/drower.png'),
         fit: BoxFit.fill,
       ),
     ),
@@ -20,7 +21,7 @@ Widget drawer(double hit, double wid) {
         const Gap(40),
         Row(
           children: [
-            Image.asset("assets/image/la.png"),
+            Image.asset("assets/images/profile_image.png"),
             const Gap(10),
             const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,7 +113,9 @@ Widget drawer(double hit, double wid) {
         ),
         const Gap(20),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.offNamed('/Manage_offer');
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -137,7 +140,9 @@ Widget drawer(double hit, double wid) {
         ),
         const Gap(20),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.toNamed('/order_deshboard');
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -162,7 +167,9 @@ Widget drawer(double hit, double wid) {
         ),
         const Gap(20),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.offNamed('/earning');
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -212,7 +219,9 @@ Widget drawer(double hit, double wid) {
         ),
         const Gap(20),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.offNamed('/Active_offers');
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -280,7 +289,9 @@ Widget drawer(double hit, double wid) {
         ),
         const Gap(20),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.offNamed('/About_Us');
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -305,7 +316,9 @@ Widget drawer(double hit, double wid) {
         ),
         const Gap(20),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.offNamed('/Term_condition');
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -330,7 +343,9 @@ Widget drawer(double hit, double wid) {
         ),
         const Gap(20),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.offNamed('/Privacy_Policy');
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

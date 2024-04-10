@@ -39,7 +39,9 @@ class cart extends StatelessWidget {
                     caption: 'Delete',
                     color: Colors.red,
                     icon: Icons.delete,
+
                     onTap: () {},
+
                     // onTap: () => _showSnackBar('Delete'),
                   ),
                 ],

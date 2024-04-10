@@ -31,6 +31,8 @@ class _create_businessState extends State<create_business> {
 
   @override
   Widget build(BuildContext context) {
+    double hit = MediaQuery.of(context).size.height;
+    double wid = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -38,10 +40,14 @@ class _create_businessState extends State<create_business> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 214, 170, 38),
+        backgroundColor: AppColor.primary,
       ),
+      backgroundColor: const Color(0xfff9f9f9),
       body: SingleChildScrollView(
-        child: Center(
+        child: Container(
+          height: hit,
+          width: wid,
+          padding: EdgeInsets.all(16),
           child: Column(
             children: [
               const Gap(25),

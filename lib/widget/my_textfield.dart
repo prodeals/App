@@ -10,13 +10,14 @@ class My_TextFiled extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+    return SizedBox(
+      height: 60,
       child: TextField(
         maxLines: 1,
         controller: controller,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide(color: Colors.black, width: 1),
           ),
           focusedBorder: OutlineInputBorder(

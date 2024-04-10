@@ -15,13 +15,25 @@ class Manage_offer extends StatefulWidget {
 class _Manage_offerState extends State<Manage_offer> {
   @override
   Widget build(BuildContext context) {
+    double hit = MediaQuery.of(context).size.height;
+    double wid = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         actions: [
-          Image.asset("assets/image/s_la-pinoz.png"),
+          Container(
+            height: 40,
+            width: 40,
+            decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    image: AssetImage('assets/images/profile_image.png'))),
+          ),
+          const Gap(16),
         ],
+        elevation: 0,
       ),
-      drawer: drawer(900, 350),
+      drawer: drawer(hit, wid),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -35,7 +47,7 @@ class _Manage_offerState extends State<Manage_offer> {
               const Gap(20),
               Row(
                 children: [
-                  Image.asset("assets/image/image 55.png"),
+                  Image.asset("assets/images/profile_image.png"),
                   const Gap(10),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,9 +114,9 @@ class _Manage_offerState extends State<Manage_offer> {
                   const Spacer(),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20),
-                    child: Image.asset(
-                      "assets/image/Group 3765.png",
-                    ),
+                    // child: Image.asset(
+                    //   "assets/image/Group 3765.png",
+                    // ),
                   ),
                 ],
               ),

@@ -15,15 +15,15 @@ class dashboard extends StatefulWidget {
 class _dashboardState extends State<dashboard> {
   @override
   Widget build(BuildContext context) {
-    Color color7 = Color(0xFF6BB5FA);
-    Color color8 = Color(0xFFFFFFFF);
-    Color color6 = Color(0xFFF3742D);
-    Color color9 = Color(0xFFD0DFEE);
-    Color color5 = Color(0xFF81D1FF);
-    Color color = Color(0xFF3C81C2);
-    Color color1 = Color(0xFFDAA520);
-    Color color2 = Color(0xFFFCE5AC);
-    Color color3 = Color(0xFF32801C);
+    Color color7 = const Color(0xFF6BB5FA);
+    Color color8 = const Color(0xFFFFFFFF);
+    Color color6 = const Color(0xFFF3742D);
+    Color color9 = const Color(0xFFD0DFEE);
+    Color color5 = const Color(0xFF81D1FF);
+    Color color = const Color(0xFF3C81C2);
+    Color color1 = const Color(0xFFDAA520);
+    Color color2 = const Color(0xFFFCE5AC);
+    Color color3 = const Color(0xFF32801C);
     Color? mixedColor = Color.lerp(color7, color8, 0.5);
     double wid = MediaQuery.of(context).size.width;
     double hei = MediaQuery.of(context).size.height;
@@ -374,7 +374,7 @@ class _dashboardState extends State<dashboard> {
                               color: CupertinoColors.white),
                           child: Column(
                             children: [
-                              Gap(10),
+                              const Gap(10),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -435,11 +435,11 @@ class _dashboardState extends State<dashboard> {
                               //                   ),
                               //   ],
                               // ),
-                              barchart(),
+                              const barchart(),
                             ],
                           )),
                     ),
-                    Gap(20),
+                    const Gap(20),
                   ],
                 ),
               )),

@@ -25,6 +25,8 @@ class _Profession_detailsState extends State<Profession_details> {
 
   @override
   Widget build(BuildContext context) {
+    double hit = MediaQuery.of(context).size.height;
+    double wid = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -39,34 +41,30 @@ class _Profession_detailsState extends State<Profession_details> {
             icon: const Icon(Icons.arrow_back)),
         backgroundColor: const Color.fromARGB(255, 214, 170, 38),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Gap(25),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50),
-              child: Text(
-                "Business / Profession Details",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      body: Container(
+        height: hit,
+        width: wid,
+        padding: const EdgeInsets.all(16),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Gap(25),
+              const Center(
+                child: Text(
+                  "Business / Profession Details",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              const Gap(20),
+              Text(
                 'Category',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-            ),
-            const Gap(10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
+              const Gap(10),
+              Container(
                 height: 60,
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
@@ -75,10 +73,10 @@ class _Profession_detailsState extends State<Profession_details> {
                 ),
                 child: DropdownButton<String>(
                   value: categoryeValue,
-                  icon: Icon(Icons.keyboard_arrow_down),
+                  icon: const Icon(Icons.keyboard_arrow_down),
                   isExpanded: true,
-                  underline: SizedBox(),
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  underline: const SizedBox(),
+                  style: const TextStyle(color: Colors.black, fontSize: 18),
                   onChanged: (newValue) {
                     setState(() {
                       categoryeValue = newValue;
@@ -92,39 +90,30 @@ class _Profession_detailsState extends State<Profession_details> {
                   }).toList(),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
                 'GST Number',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-            ),
-            const Gap(10),
-            My_TextFiled(controller: _GSTController),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              const Gap(10),
+              My_TextFiled(controller: _GSTController),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
                 'Pan Number',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-            ),
-            const Gap(10),
-            My_TextFiled(controller: _panController),
-            const Gap(20),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              const Gap(10),
+              My_TextFiled(controller: _panController),
+              const Gap(20),
+              Text(
                 'Business / Profession Proof',
                 style: TextStyle(
                   color: Colors.black,
@@ -132,40 +121,40 @@ class _Profession_detailsState extends State<Profession_details> {
                   fontSize: 16,
                 ),
               ),
-            ),
-            const Gap(20),
-            const Center(child: ImagePickerContainer()),
-            const Gap(20),
-            Row(
-              children: [
-                Transform.scale(
-                  scale: 1.2,
-                  child: Checkbox(
-                      checkColor: Colors.white,
-                      activeColor: Colors.amber,
-                      value: isChecked,
-                      onChanged: (bool? value) {
-                        setState(() {
-                          isChecked = value!;
-                        });
-                      }),
-                ),
-                const Text(
-                  "I have Multiple store",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                )
-              ],
-            ),
-            const Gap(15),
-            Padding(
-              padding: const EdgeInsets.only(left: 240),
-              child: MyButton(
-                onTap: () {
-                  Get.toNamed('/Profession_Profile');
-                },
+              const Gap(20),
+              const Center(child: ImagePickerContainer()),
+              const Gap(20),
+              Row(
+                children: [
+                  Transform.scale(
+                    scale: 1.2,
+                    child: Checkbox(
+                        checkColor: Colors.white,
+                        activeColor: Colors.amber,
+                        value: isChecked,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isChecked = value!;
+                          });
+                        }),
+                  ),
+                  const Text(
+                    "I have Multiple store",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  )
+                ],
               ),
-            )
-          ],
+              const Gap(15),
+              Padding(
+                padding: const EdgeInsets.only(left: 240),
+                child: MyButton(
+                  onTap: () {
+                    Get.toNamed('/Profession_Profile');
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

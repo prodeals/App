@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
@@ -32,7 +33,7 @@ class _successfullyState extends State<successfully> {
             const SizedBox(
               height: 80,
             ),
-            Image.asset("assets/image/undraw_completed_m9ci 1.png"),
+            SvgPicture.asset("assets/images/svg/confirm.svg"),
             const SizedBox(
               height: 50,
             ),
@@ -49,7 +50,10 @@ class _successfullyState extends State<successfully> {
             Gap(40),
             GestureDetector(
               onTap: () {
-                Get.toNamed('/deshborad');
+                Get.offNamedUntil(
+                  '/deshborad',
+                  (route) => false,
+                );
               },
               child: Container(
                 height: 50,

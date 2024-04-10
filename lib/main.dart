@@ -4,19 +4,23 @@ import 'package:get/get.dart';
 import 'package:pro_deals1/ios/promocode_details.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'android/About Us.dart';
 import 'android/Active_offers.dart';
 import 'android/Business_address.dart';
 import 'android/Business_profession_detail.dart';
 import 'android/Business_profil.dart';
 import 'android/DeliveryAddress.dart';
+import 'android/Earning.dart';
 import 'android/Filter.dart';
 import 'android/Manage_offer.dart';
 import 'android/MyCart.dart';
 import 'android/MyFavourite.dart';
 import 'android/Notification.dart';
 import 'android/Premium_page.dart';
+import 'android/Privay_policy.dart';
 import 'android/Search.dart';
 import 'android/Support.dart';
+import 'android/Term & Condition.dart';
 import 'android/Verify_identify.dart';
 import 'android/add_address.dart';
 import 'android/categories.dart';
@@ -58,6 +62,10 @@ import 'ios/ios_qr.dart';
 import 'ios/ios_sign_up.dart';
 import 'ios/ios_support_center.dart';
 import 'ios/navigation.dart';
+import 'ios/pages/ios_address.dart';
+import 'ios/pages/ios_create_account.dart';
+import 'ios/pages/ios_details.dart';
+import 'ios/pages/ios_work_place_images.dart';
 import 'ios/promocode.dart';
 import 'ios/scan_qr.dart';
 import 'splash.dart';
@@ -79,159 +87,175 @@ class ProDeals extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Pro Deals",
-      initialRoute: '/Coupons',
-      // initialRoute: '/',
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => const splash(),
-        ),
-        GetPage(
-          name: '/intro',
-          page: () => const intro(),
-        ),
-        GetPage(
-          name: '/login',
-          page: () => login(),
-        ),
-        GetPage(
-          name: '/register',
-          page: () => register(),
-        ),
-        GetPage(
-          name: '/forgot',
-          page: () => const forgot_pass(),
-        ),
-        GetPage(
-          name: '/otp_verification',
-          page: () => const otp_verification(),
-        ),
-        GetPage(
-          name: '/navigation',
-          page: () => const navigation(),
-        ),
-        GetPage(
-          name: '/home',
-          page: () => const home_page(),
-        ),
-        GetPage(
-          name: '/Categories',
-          page: () => const categories(),
-        ),
-        GetPage(
-          name: '/cart',
-          page: () => const cart(),
-        ),
-        GetPage(
-          name: '/Premium',
-          page: () => const premium_page(),
-        ),
-        GetPage(
-          name: '/profile',
-          page: () => const profile_page(),
-        ),
-        GetPage(
-          name: '/edit_profile',
-          page: () => const edit_profile(),
-        ),
-        GetPage(
-          name: '/Search',
-          page: () => const search(),
-        ),
-        GetPage(
-          name: '/filter',
-          page: () => const filter(),
-        ),
-        GetPage(
-          name: '/shop',
-          page: () => const shope_page(),
-        ),
-        GetPage(
-          name: '/details',
-          page: () => const details(),
-        ),
-        GetPage(
-          name: '/Favourite',
-          page: () => const Favourite(),
-        ),
-        // GetPage(name: '/', page: page)
-        GetPage(
-          name: '/address',
-          page: () => const DeliveryAddress(),
-        ),
-        GetPage(
-          name: '/add_address',
-          page: () => const add_address(),
-        ),
-        GetPage(
-          name: '/notification',
-          page: () => const notification(),
-        ),
-        GetPage(
-          name: '/Support',
-          page: () => const support(),
-        ),
-        GetPage(
-          name: '/Support_details',
-          page: () => const support_details(),
-        ),
-        GetPage(
-          name: '/qr_scanner',
-          page: () => const qr_scanner(),
-        ),
-        GetPage(
-          name: '/Active_offers',
-          page: () => const Active_offers(),
-        ),
-        GetPage(
-          name: '/Manage_offer',
-          page: () => const Manage_offer(),
-        ),
-        GetPage(
-          name: '/upload_store',
-          page: () => const upload_store(),
-        ),
-        GetPage(
-          name: '/verify',
-          page: () => const verify(),
-        ),
-        GetPage(
-          name: '/successfully',
-          page: () => const successfully(),
-        ),
-        GetPage(
-          name: '/create_business',
-          page: () => create_business(),
-        ),
-        GetPage(
-          name: '/Profession_Profile',
-          page: () => const Profession_Profile(),
-        ),
-        GetPage(
-          name: '/Profession_details',
-          page: () => const Profession_details(),
-        ),
-        GetPage(
-          name: '/Business_Address',
-          page: () => B_Address(),
-        ),
-        GetPage(
-          name: '/deshborad',
-          page: () => const deshborad(),
-        ),
-        GetPage(
-          name: '/order_deshboard',
-          page: () => const order_deshboard(),
-        ),
-        GetPage(
-          name: '/Coupons',
-          page: () => const Coupons(),
-        ),
-      ],
-    );
+    // return GetMaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   title: "Pro Deals",
+    //   // initialRoute: '/Coupons',
+    //   initialRoute: '/',
+    //   getPages: [
+    //     GetPage(
+    //       name: '/',
+    //       page: () => const splash(),
+    //     ),
+    //     GetPage(
+    //       name: '/intro',
+    //       page: () => const intro(),
+    //     ),
+    //     GetPage(
+    //       name: '/login',
+    //       page: () => login(),
+    //     ),
+    //     GetPage(
+    //       name: '/register',
+    //       page: () => register(),
+    //     ),
+    //     GetPage(
+    //       name: '/forgot',
+    //       page: () => const forgot_pass(),
+    //     ),
+    //     GetPage(
+    //       name: '/otp_verification',
+    //       page: () => const otp_verification(),
+    //     ),
+    //     GetPage(
+    //       name: '/navigation',
+    //       page: () => const navigation(),
+    //     ),
+    //     GetPage(
+    //       name: '/home',
+    //       page: () => const home_page(),
+    //     ),
+    //     GetPage(
+    //       name: '/Categories',
+    //       page: () => const categories(),
+    //     ),
+    //     GetPage(
+    //       name: '/cart',
+    //       page: () => const cart(),
+    //     ),
+    //     GetPage(
+    //       name: '/Premium',
+    //       page: () => const premium_page(),
+    //     ),
+    //     GetPage(
+    //       name: '/profile',
+    //       page: () => const profile_page(),
+    //     ),
+    //     GetPage(
+    //       name: '/edit_profile',
+    //       page: () => const edit_profile(),
+    //     ),
+    //     GetPage(
+    //       name: '/Search',
+    //       page: () => const search(),
+    //     ),
+    //     GetPage(
+    //       name: '/filter',
+    //       page: () => const filter(),
+    //     ),
+    //     GetPage(
+    //       name: '/shop',
+    //       page: () => const shope_page(),
+    //     ),
+    //     GetPage(
+    //       name: '/details',
+    //       page: () => const details(),
+    //     ),
+    //     GetPage(
+    //       name: '/Favourite',
+    //       page: () => const Favourite(),
+    //     ),
+    //     // GetPage(name: '/', page: page)
+    //     GetPage(
+    //       name: '/address',
+    //       page: () => const DeliveryAddress(),
+    //     ),
+    //     GetPage(
+    //       name: '/add_address',
+    //       page: () => const add_address(),
+    //     ),
+    //     GetPage(
+    //       name: '/notification',
+    //       page: () => const notification(),
+    //     ),
+    //     GetPage(
+    //       name: '/Support',
+    //       page: () => const support(),
+    //     ),
+    //     GetPage(
+    //       name: '/Support_details',
+    //       page: () => const support_details(),
+    //     ),
+    //     GetPage(
+    //       name: '/qr_scanner',
+    //       page: () => const qr_scanner(),
+    //     ),
+    //     GetPage(
+    //       name: '/Active_offers',
+    //       page: () => const Active_offers(),
+    //     ),
+    //     GetPage(
+    //       name: '/Manage_offer',
+    //       page: () => const Manage_offer(),
+    //     ),
+    //     GetPage(
+    //       name: '/upload_store',
+    //       page: () => const upload_store(),
+    //     ),
+    //     GetPage(
+    //       name: '/verify',
+    //       page: () => const verify(),
+    //     ),
+    //     GetPage(
+    //       name: '/successfully',
+    //       page: () => const successfully(),
+    //     ),
+    //     GetPage(
+    //       name: '/create_business',
+    //       page: () => create_business(),
+    //     ),
+    //     GetPage(
+    //       name: '/Profession_Profile',
+    //       page: () => const Profession_Profile(),
+    //     ),
+    //     GetPage(
+    //       name: '/Profession_details',
+    //       page: () => const Profession_details(),
+    //     ),
+    //     GetPage(
+    //       name: '/Business_Address',
+    //       page: () => B_Address(),
+    //     ),
+    //     GetPage(
+    //       name: '/deshborad',
+    //       page: () => const deshborad(),
+    //     ),
+    //     GetPage(
+    //       name: '/earning',
+    //       page: () => const earning(),
+    //     ),
+    //     GetPage(
+    //       name: '/About_Us',
+    //       page: () => const About_Us(),
+    //     ),
+    //     GetPage(
+    //       name: '/Term_condition',
+    //       page: () => const Term_condition(),
+    //     ),
+    //     GetPage(
+    //       name: '/Privacy_Policy',
+    //       page: () => const Privacy_Policy(),
+    //     ),
+    //     GetPage(
+    //       name: '/order_deshboard',
+    //       page: () => order_deshboard(),
+    //     ),
+    //     GetPage(
+    //       name: '/Coupons',
+    //       page: () => const Coupons(),
+    //     ),
+    //   ],
+    // );
     return GetCupertinoApp(
       localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
         DefaultMaterialLocalizations.delegate,
@@ -239,8 +263,8 @@ class ProDeals extends StatelessWidget {
       ],
       debugShowCheckedModeBanner: false,
       title: "Pro Deals",
-      initialRoute: '/promocode',
-      // initialRoute: '/',
+      // initialRoute: '/promocode',
+      initialRoute: '/',
       getPages: [
         GetPage(
           name: '/',
@@ -333,6 +357,22 @@ class ProDeals extends StatelessWidget {
         GetPage(
           name: '/ios_add_address',
           page: () => const ios_add_address(),
+        ),
+        GetPage(
+          name: '/ios_create_account',
+          page: () => ios_create_account(),
+        ),
+        GetPage(
+          name: '/ios_address',
+          page: () => ios_address(),
+        ),
+        GetPage(
+          name: '/ios_detail',
+          page: () => ios_detail(),
+        ),
+        GetPage(
+          name: '/ios_images',
+          page: () => ios_images(),
         ),
       ],
     );

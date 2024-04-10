@@ -59,8 +59,28 @@ List Dessert = [
 bool isfood = true;
 
 List orders = [
-  {'name': "Delicious Burger", 'prize': 30, 'quantity': 1},
-  {'name': "Samosa", 'prize': 10, 'quantity': 2},
-  {'name': "Strawberry Cake", 'prize': 180, 'quantity': 1},
-  {'name': "Delicious Burger", 'prize': 10, 'quantity': 1},
+  {
+    'image': 'assets/image/image 22.png',
+    'name': "Delicious Burger",
+    'prize': 30,
+    'quantity': 1
+  },
+  {
+    'image': 'assets/image/meat-dish-with-vegetables.jpg',
+    'name': "Samosa",
+    'prize': 10,
+    'quantity': 2
+  },
+  {
+    'image': 'assets/image/image 54 (1).png',
+    'name': "Strawberry Cake",
+    'prize': 180,
+    'quantity': 1
+  },
+  {
+    'image': 'assets/image/image 22.png',
+    'name': "Delicious Burger",
+    'prize': 10,
+    'quantity': 1
+  },
 ];
