@@ -26,28 +26,29 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Column(
         children: [
           Expanded(
-              flex: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CupertinoButton(
-                    onPressed: () {
-                      _innerDrawerKey.currentState
-                          ?.toggle(direction: InnerDrawerDirection.end);
-                    },
-                    child: const Icon(
-                      CupertinoIcons.bars,
-                      size: 30,
-                      color: CupertinoColors.black,
-                    ),
+            flex: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CupertinoButton(
+                  onPressed: () {
+                    _innerDrawerKey.currentState
+                        ?.toggle(direction: InnerDrawerDirection.end);
+                  },
+                  child: const Icon(
+                    CupertinoIcons.bars,
+                    size: 30,
+                    color: CupertinoColors.black,
                   ),
-                  Image.asset(
-                    'assets/images/Rectangle 5021 (1).png',
-                    width: 80,
-                    height: 80,
-                  ),
-                ],
-              )),
+                ),
+                Image.asset(
+                  'assets/images/Rectangle 5021 (1).png',
+                  width: 80,
+                  height: 80,
+                ),
+              ],
+            ),
+          ),
           Expanded(
             flex: 8,
             child: InnerDrawer(
@@ -440,179 +441,169 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Gap(20),
-            Text(
-              '   TOTAl EARNINGS',
-              style: GoogleFonts.openSans(
-                textStyle: Theme.of(context).textTheme.displayLarge,
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                fontStyle: FontStyle.normal,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                'TOTAl EARNINGS',
+                style: GoogleFonts.openSans(
+                  textStyle: Theme.of(context).textTheme.displayLarge,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  fontStyle: FontStyle.normal,
+                ),
               ),
             ),
             const Gap(20),
             Center(
               child: Container(
-                  width: wid / 1.08,
-                  height: hei / 3.50,
-                  decoration: BoxDecoration(
-                      boxShadow: const [
-                        BoxShadow(
-                            blurStyle: BlurStyle.normal,
-                            blurRadius: 0,
-                            spreadRadius: 0)
-                      ],
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Gap(10),
-                      Text(
-                        '   Revenue ',
-                        style: GoogleFonts.openSans(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 190,
-                            width: 400,
-                            child: SfRadialGauge(
-                              axes: [
-                                RadialAxis(
-                                  showLabels: false,
-                                  startAngle: 180,
-                                  endAngle: 0,
-                                  interval: 100,
-                                  canScaleToFit: true,
-                                  minimum: 0,
-                                  maximum: 100,
-                                  annotations: <GaugeAnnotation>[
-                                    GaugeAnnotation(
-                                        widget: Container(
-                                      child: Stack(
-                                        alignment: Alignment.bottomCenter,
-                                        children: [
-                                          Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              const Gap(60),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                children: [
-                                                  Text(
-                                                    'Total Revenue',
-                                                    style: GoogleFonts.openSans(
-                                                      textStyle:
-                                                          Theme.of(context)
-                                                              .textTheme
-                                                              .displayLarge,
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontStyle:
-                                                          FontStyle.normal,
-                                                    ),
-                                                  ),
-                                                  const Gap(2),
-                                                  Text(
-                                                    'Missed',
-                                                    style: GoogleFonts.openSans(
-                                                      textStyle:
-                                                          Theme.of(context)
-                                                              .textTheme
-                                                              .displayLarge,
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontStyle:
-                                                          FontStyle.normal,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              const Gap(5),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                children: [
-                                                  Text(
-                                                    '  ₹ 9,37,000',
-                                                    style: GoogleFonts.openSans(
-                                                      textStyle:
-                                                          Theme.of(context)
-                                                              .textTheme
-                                                              .displayLarge,
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      fontStyle:
-                                                          FontStyle.normal,
-                                                    ),
-                                                  ),
-                                                  const Gap(2),
-                                                  Text(
-                                                    '     ₹ 23,000',
-                                                    style: GoogleFonts.openSans(
-                                                      textStyle:
-                                                          Theme.of(context)
-                                                              .textTheme
-                                                              .displayLarge,
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      fontStyle:
-                                                          FontStyle.normal,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ))
-                                  ],
-                                  pointers: const <GaugePointer>[
-                                    NeedlePointer(
-                                      needleLength: 1.10,
-                                      value: 60,
-                                      enableAnimation: true,
-                                    )
-                                  ],
-                                  ranges: [
-                                    GaugeRange(
-                                        startValue: 0,
-                                        endValue: 60,
-                                        color: color,
-                                        sizeUnit: GaugeSizeUnit.factor,
-                                        startWidth: 0.26,
-                                        endWidth: 0.26),
-                                    GaugeRange(
-                                      startValue: 60,
-                                      sizeUnit: GaugeSizeUnit.factor,
-                                      startWidth: 0.26,
-                                      endWidth: 0.26,
-                                      endValue: 100,
-                                      color: color9,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                width: wid / 1.08,
+                height: hei / 3.50,
+                decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                        blurStyle: BlurStyle.normal,
+                        blurRadius: 0,
+                        spreadRadius: 0,
                       ),
                     ],
-                  )),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Gap(10),
+                    Text(
+                      'Revenue',
+                      style: GoogleFonts.openSans(
+                        textStyle: Theme.of(context).textTheme.displayLarge,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: 190,
+                          width: 400,
+                          child: SfRadialGauge(
+                            axes: [
+                              RadialAxis(
+                                showLabels: false,
+                                startAngle: 180,
+                                endAngle: 0,
+                                interval: 100,
+                                canScaleToFit: true,
+                                minimum: 0,
+                                maximum: 100,
+                                annotations: <GaugeAnnotation>[
+                                  GaugeAnnotation(
+                                      widget: Stack(
+                                    alignment: Alignment.bottomCenter,
+                                    children: [
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const Gap(60),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text(
+                                                'Total Revenue',
+                                                style: GoogleFonts.openSans(
+                                                  textStyle: Theme.of(context)
+                                                      .textTheme
+                                                      .displayLarge,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                ),
+                                              ),
+                                              const Gap(2),
+                                              Text(
+                                                'Missed',
+                                                style: GoogleFonts.openSans(
+                                                  textStyle: Theme.of(context)
+                                                      .textTheme
+                                                      .displayLarge,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const Gap(5),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text(
+                                                '  ₹ 9,37,000',
+                                                style: GoogleFonts.openSans(
+                                                  textStyle: Theme.of(context)
+                                                      .textTheme
+                                                      .displayLarge,
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontStyle: FontStyle.normal,
+                                                ),
+                                              ),
+                                              const Gap(2),
+                                              Text(
+                                                '     ₹ 23,000',
+                                                style: GoogleFonts.openSans(
+                                                  textStyle: Theme.of(context)
+                                                      .textTheme
+                                                      .displayLarge,
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontStyle: FontStyle.normal,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ))
+                                ],
+                                pointers: const <GaugePointer>[
+                                  NeedlePointer(
+                                    needleLength: 1.10,
+                                    value: 60,
+                                    enableAnimation: true,
+                                  )
+                                ],
+                                ranges: [
+                                  GaugeRange(
+                                    startValue: 0,
+                                    endValue: 60,
+                                    color: color,
+                                    sizeUnit: GaugeSizeUnit.factor,
+                                    startWidth: 0.26,
+                                    endWidth: 0.26,
+                                  ),
+                                  GaugeRange(
+                                    startValue: 60,
+                                    sizeUnit: GaugeSizeUnit.factor,
+                                    startWidth: 0.26,
+                                    endWidth: 0.26,
+                                    endValue: 100,
+                                    color: color9,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
             const Gap(20),
             Center(

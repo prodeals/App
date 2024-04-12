@@ -2,7 +2,9 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -103,11 +105,12 @@ class _ios_create_accountState extends State<ios_create_account> {
                               bottom: 3,
                               right: 0,
                               child: GestureDetector(
-                                  onTap: () {
-                                    imagepicker(context);
-                                  },
-                                  child: Image.asset(
-                                      "assets/images/Group 3747.png")),
+                                onTap: () {
+                                  imagepicker(context);
+                                },
+                                child:
+                                    SvgPicture.asset('assets/icons/pencil.svg'),
+                              ),
                             )
                         ],
                       ),
@@ -223,10 +226,7 @@ class _ios_create_accountState extends State<ios_create_account> {
                       const Gap(30),
                       ios_button(
                         onTap: () {
-                          // Navigator.pushReplacement(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (_) => const ios_address()));
+                          Get.toNamed('/ios_business_address');
                         },
                       ),
                     ],

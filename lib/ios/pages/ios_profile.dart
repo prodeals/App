@@ -1,19 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/colors.dart';
 import '../../widget/ios_button.dart';
 
-class ios_profile extends StatefulWidget {
-  const ios_profile({super.key});
+class ios_businessProfile extends StatefulWidget {
+  const ios_businessProfile({super.key});
 
   @override
-  State<ios_profile> createState() => _ios_profileState();
+  State<ios_businessProfile> createState() => _ios_businessProfileState();
 }
 
-class _ios_profileState extends State<ios_profile> {
+class _ios_businessProfileState extends State<ios_businessProfile> {
   get _DiscriptionController => null;
 
   get _daysController => null;
@@ -237,8 +238,7 @@ class _ios_profileState extends State<ios_profile> {
                       const Gap(30),
                       ios_button(
                         onTap: () {
-                          // Navigator.pushReplacement(context,
-                          //     MaterialPageRoute(builder: (_) => ios_images()));
+                          Get.toNamed('/ios_images');
                         },
                       ),
                     ],

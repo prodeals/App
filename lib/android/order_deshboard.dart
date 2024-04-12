@@ -632,8 +632,8 @@ class order_deshboard extends StatelessWidget {
                         decoration: const BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                          'assets/images/Rectangle 5043.png',
-                        ))),
+                                  'assets/images/Rectangle 5043.png',
+                                ))),
                       ),
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -642,7 +642,7 @@ class order_deshboard extends StatelessWidget {
                             'Cheese Pizza',
                             style: GoogleFonts.openSans(
                               textStyle:
-                                  Theme.of(context).textTheme.displayLarge,
+                              Theme.of(context).textTheme.displayLarge,
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
                               fontStyle: FontStyle.normal,
@@ -652,7 +652,7 @@ class order_deshboard extends StatelessWidget {
                             '12 feb 2024',
                             style: GoogleFonts.openSans(
                               textStyle:
-                                  Theme.of(context).textTheme.displayLarge,
+                              Theme.of(context).textTheme.displayLarge,
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
                               fontStyle: FontStyle.normal,
@@ -667,7 +667,7 @@ class order_deshboard extends StatelessWidget {
                             'OID - 663423756342',
                             style: GoogleFonts.openSans(
                               textStyle:
-                                  Theme.of(context).textTheme.displayLarge,
+                              Theme.of(context).textTheme.displayLarge,
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
                               fontStyle: FontStyle.normal,
@@ -677,7 +677,7 @@ class order_deshboard extends StatelessWidget {
                             '₹ 399',
                             style: GoogleFonts.openSans(
                               textStyle:
-                                  Theme.of(context).textTheme.displayLarge,
+                              Theme.of(context).textTheme.displayLarge,
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                               fontStyle: FontStyle.normal,
@@ -765,8 +765,8 @@ class order_deshboard extends StatelessWidget {
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
-                        'assets/images/Rectangle 5043.png',
-                      ))),
+                                'assets/images/Rectangle 5043.png',
+                              ))),
                     ),
                     title: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

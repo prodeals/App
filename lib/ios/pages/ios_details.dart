@@ -2,7 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -234,11 +237,8 @@ class _ios_detailState extends State<ios_detail> {
                                 onTap: _pickImage,
                                 child: Container(
                                   padding: const EdgeInsets.all(4),
-                                  child: Image.asset(
-                                    'assets/images/Group 3747.png',
-                                    width: 20,
-                                    height: 20,
-                                  ),
+                                  child: SvgPicture.asset(
+                                      'assets/icons/pencil.svg'),
                                 ),
                               ),
                             ),
@@ -248,38 +248,30 @@ class _ios_detailState extends State<ios_detail> {
                         CupertinoFormRow(
                           child: Row(
                             children: [
-                              Transform.scale(
-                                scale: 1.2,
-                                child: CupertinoCheckbox(
-                                  checkColor: AppColor.white,
-                                  activeColor: AppColor.primary,
-                                  value: isChecked,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      isChecked = value!;
-                                    });
-                                  },
-                                ),
+                              CupertinoCheckbox(
+                                checkColor: AppColor.white,
+                                activeColor: AppColor.primary,
+                                value: isChecked,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    isChecked = value!;
+                                  });
+                                },
                               ),
-                              const Text(
+                              Text(
                                 "I have Multiple store",
                                 style: TextStyle(
+                                  color: AppColor.gray,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
-                        Gap(30),
                         ios_button(
                           onTap: () {
-                            // Navigator.pushReplacement(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (_) => ios_profile(),
-                            //   ),
-                            // );
+                            Get.toNamed('/ios_businessProfile');
                           },
                         ),
                       ],

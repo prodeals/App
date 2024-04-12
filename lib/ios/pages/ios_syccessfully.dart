@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/colors.dart';
@@ -36,8 +38,7 @@ class _ios_successfullyState extends State<ios_successfully> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        // Navigator.pushReplacement(context,
-                        //     MaterialPageRoute(builder: (_) => ios_verify()));
+                        Get.back();
                       },
                       icon: const Icon(
                         Icons.arrow_back,
@@ -74,7 +75,7 @@ class _ios_successfullyState extends State<ios_successfully> {
                   child: Column(
                     children: [
                       Gap(hit / 15),
-                      Image.asset("assets/images/undraw_completed_m9ci 1.png"),
+                      SvgPicture.asset('assets/images/svg/confirm.svg'),
                       Gap(hit / 15),
                       Text(
                         "Successfully",
@@ -97,10 +98,7 @@ class _ios_successfullyState extends State<ios_successfully> {
                       const Gap(30),
                       GestureDetector(
                         onTap: () {
-                          // Navigator.pushReplacement(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (_) => ios_successfully()));
+                          Get.toNamed('/dashboard');
                         },
                         child: Container(
                           height: 50,

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/colors.dart';
@@ -221,8 +222,7 @@ class _ios_addressState extends State<ios_address> {
                       const Gap(30),
                       ios_button(
                         onTap: () {
-                          // Navigator.pushReplacement(context,
-                          //     MaterialPageRoute(builder: (_) => ios_detail()));
+                          Get.toNamed('/ios_detail');
                         },
                       ),
                     ],

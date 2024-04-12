@@ -61,7 +61,8 @@ dependencies:
   syncfusion_flutter_charts: ^25.1.38
   syncfusion_flutter_gauges: ^25.1.38
   flutter_slidable: ^0.6.0
-  
+  qr_flutter:
+
 
 dev_dependencies:
   flutter_test:

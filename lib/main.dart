@@ -62,10 +62,22 @@ import 'ios/ios_qr.dart';
 import 'ios/ios_sign_up.dart';
 import 'ios/ios_support_center.dart';
 import 'ios/navigation.dart';
+import 'ios/pages/Earning.dart';
+import 'ios/pages/Privacy_policy.dart';
+import 'ios/pages/Terms & Condition.dart';
+import 'ios/pages/dashborad.dart';
+import 'ios/pages/ios_about_us.dart';
+import 'ios/pages/ios_active_offers.dart';
 import 'ios/pages/ios_address.dart';
 import 'ios/pages/ios_create_account.dart';
 import 'ios/pages/ios_details.dart';
+import 'ios/pages/ios_manage_offers.dart';
+import 'ios/pages/ios_profile.dart';
+import 'ios/pages/ios_syccessfully.dart';
+import 'ios/pages/ios_verify.dart';
 import 'ios/pages/ios_work_place_images.dart';
+import 'ios/pages/overview.dart';
+import 'ios/pages/total order.dart';
 import 'ios/promocode.dart';
 import 'ios/scan_qr.dart';
 import 'splash.dart';
@@ -263,8 +275,8 @@ class ProDeals extends StatelessWidget {
       ],
       debugShowCheckedModeBanner: false,
       title: "Pro Deals",
-      // initialRoute: '/promocode',
-      initialRoute: '/',
+      initialRoute: '/ios_create_account',
+      // initialRoute: '/',
       getPages: [
         GetPage(
           name: '/',
@@ -363,16 +375,64 @@ class ProDeals extends StatelessWidget {
           page: () => ios_create_account(),
         ),
         GetPage(
-          name: '/ios_address',
-          page: () => ios_address(),
+          name: '/ios_business_address',
+          page: () => const ios_address(),
         ),
         GetPage(
           name: '/ios_detail',
-          page: () => ios_detail(),
+          page: () => const ios_detail(),
+        ),
+        GetPage(
+          name: '/ios_businessProfile',
+          page: () => const ios_businessProfile(),
         ),
         GetPage(
           name: '/ios_images',
-          page: () => ios_images(),
+          page: () => const ios_images(),
+        ),
+        GetPage(
+          name: '/ios_verify',
+          page: () => const ios_verify(),
+        ),
+        GetPage(
+          name: '/ios_successfully',
+          page: () => const ios_successfully(),
+        ),
+        GetPage(
+          name: '/dashboard',
+          page: () => const dashboard(),
+        ),
+        GetPage(
+          name: '/ios_about_us',
+          page: () => const ios_about_us(),
+        ),
+        GetPage(
+          name: '/privacy_policy',
+          page: () => const privacy_policy(),
+        ),
+        GetPage(
+          name: '/term_conditiom',
+          page: () => const term_conditiom(),
+        ),
+        GetPage(
+          name: '/ios_active',
+          page: () => const ios_active(),
+        ),
+        GetPage(
+          name: '/ios_manageoffer',
+          page: () => const ios_manageoffer(),
+        ),
+        GetPage(
+          name: '/order',
+          page: () => order(),
+        ),
+        GetPage(
+          name: '/overview_ios',
+          page: () => const overview_ios(),
+        ),
+        GetPage(
+          name: '/Earning_ios',
+          page: () => const Earning_ios(),
         ),
       ],
     );

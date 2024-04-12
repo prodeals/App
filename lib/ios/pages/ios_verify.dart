@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -170,18 +171,13 @@ class _ios_verifyState extends State<ios_verify> {
                         const Gap(30),
                         GestureDetector(
                           onTap: () {
-                            // Navigator.pushReplacement(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (_) => ios_successfully(),
-                            //   ),
-                            // );
+                            Get.toNamed('/ios_successfully');
                           },
                           child: Container(
                             height: 50,
                             width: 230,
                             decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 214, 170, 38),
+                              color: AppColor.primary,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: const Center(

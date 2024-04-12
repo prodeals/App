@@ -20,10 +20,11 @@ class ios_button extends StatelessWidget {
               color: Colors.amber[100],
               borderRadius: BorderRadius.circular(10)),
           child: Center(
-              child: Icon(
-            Icons.arrow_forward_rounded,
-            color: AppColor.primary,
-          )),
+            child: Icon(
+              Icons.arrow_forward_rounded,
+              color: AppColor.primary,
+            ),
+          ),
         ),
       ),
     );

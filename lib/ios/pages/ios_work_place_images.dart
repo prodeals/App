@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -85,52 +87,56 @@ class _ios_imagesState extends State<ios_images> {
                   ),
                 ),
                 child: Form(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Gap(hit / 15),
-                        Text(
-                          "Upload Store / Work Place Images",
-                          style: GoogleFonts.inter(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20,
+                  child: Column(
+                    children: [
+                      Gap(hit / 15),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Text(
+                                "Upload Store / Work Place Images",
+                                style: GoogleFonts.inter(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              const Gap(30),
+                              GestureDetector(
+                                onTap: _pickImage,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      15), // Adjust the radius as needed
+                                  child: Container(
+                                    height: 156,
+                                    width: 156,
+                                    color: Colors.grey,
+                                    child: _image != null
+                                        ? Image.file(
+                                            _image!,
+                                            fit: BoxFit.cover,
+                                          )
+                                        : const Icon(
+                                            Icons.add_photo_alternate,
+                                            size: 50,
+                                            color: Colors.white,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        const Gap(30),
-                        GestureDetector(
-                          onTap: _pickImage,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(
-                                15), // Adjust the radius as needed
-                            child: Container(
-                              height: 156,
-                              width: 156,
-                              color: Colors.grey,
-                              child: _image != null
-                                  ? Image.file(
-                                      _image!,
-                                      fit: BoxFit.cover,
-                                    )
-                                  : const Icon(
-                                      Icons.add_photo_alternate,
-                                      size: 50,
-                                      color: Colors.white,
-                                    ),
-                            ),
-                          ),
-                        ),
-                        const Gap(30),
-                        ios_button(
-                          onTap: () {
-                            // Navigator.pushReplacement(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (_) => ios_verify()));
-                          },
-                        ),
-                      ],
-                    ),
+                      ),
+                      const Gap(30),
+                      ios_button(
+                        onTap: () {
+                          Get.toNamed('/ios_verify');
+                        },
+                      ),
+                      const Gap(30),
+                    ],
                   ),
                 ),
               ),
