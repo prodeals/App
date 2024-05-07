@@ -229,39 +229,44 @@ class ios_profile extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Column(
-                              children: [
-                                Container(
-                                  height: wid / 4.5,
-                                  width: wid / 4.5,
-                                  decoration: BoxDecoration(
-                                    color: AppColor.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        offset: const Offset(1, 1),
-                                        blurRadius: 3,
-                                        color: AppColor.gray.withOpacity(0.5),
-                                      ),
-                                    ],
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed('/ios_favourite');
+                              },
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: wid / 4.5,
+                                    width: wid / 4.5,
+                                    decoration: BoxDecoration(
+                                      color: AppColor.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          offset: const Offset(1, 1),
+                                          blurRadius: 3,
+                                          color: AppColor.gray.withOpacity(0.5),
+                                        ),
+                                      ],
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Icon(
+                                      Icons.favorite_border,
+                                      color: AppColor.black300,
+                                      size: 30,
+                                    ),
                                   ),
-                                  alignment: Alignment.center,
-                                  child: Icon(
-                                    Icons.favorite_border,
-                                    color: AppColor.black300,
-                                    size: 30,
+                                  const Gap(10),
+                                  Text(
+                                    'Favorites',
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColor.black300,
+                                      fontSize: 16,
+                                    ),
                                   ),
-                                ),
-                                const Gap(10),
-                                Text(
-                                  'Favorites',
-                                  style: GoogleFonts.openSans(
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColor.black300,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -269,39 +274,44 @@ class ios_profile extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Column(
-                              children: [
-                                Container(
-                                  height: wid / 4.5,
-                                  width: wid / 4.5,
-                                  decoration: BoxDecoration(
-                                    color: AppColor.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        offset: const Offset(1, 1),
-                                        blurRadius: 3,
-                                        color: AppColor.gray.withOpacity(0.5),
-                                      ),
-                                    ],
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed('/ios_promocode');
+                              },
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: wid / 4.5,
+                                    width: wid / 4.5,
+                                    decoration: BoxDecoration(
+                                      color: AppColor.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          offset: const Offset(1, 1),
+                                          blurRadius: 3,
+                                          color: AppColor.gray.withOpacity(0.5),
+                                        ),
+                                      ],
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Icon(
+                                      Icons.local_offer_outlined,
+                                      color: AppColor.black300,
+                                      size: 30,
+                                    ),
                                   ),
-                                  alignment: Alignment.center,
-                                  child: Icon(
-                                    Icons.local_offer_outlined,
-                                    color: AppColor.black300,
-                                    size: 30,
+                                  const Gap(10),
+                                  Text(
+                                    'Offers',
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColor.black300,
+                                      fontSize: 16,
+                                    ),
                                   ),
-                                ),
-                                const Gap(10),
-                                Text(
-                                  'Offers',
-                                  style: GoogleFonts.openSans(
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColor.black300,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                             Column(
                               children: [

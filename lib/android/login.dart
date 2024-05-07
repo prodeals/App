@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -11,6 +12,7 @@ class login extends StatelessWidget {
 
   TextEditingController phone = TextEditingController();
   TextEditingController password = TextEditingController();
+  final formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,134 +34,179 @@ class login extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Gap(90),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Text(
-                      'Login',
-                      style: GoogleFonts.roboto(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.white,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Text(
-                      'Please Sign in to Continue.',
-                      style: GoogleFonts.roboto(
-                        fontSize: 16,
-                        // fontWeight: FontWeight.bold,
-                        color: AppColor.white,
-                      ),
-                    ),
-                  ),
-                  const Gap(40),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: TextField(
-                      controller: phone,
-                      decoration: InputDecoration(
-                        label: Container(
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(
-                            color: AppColor.white,
-                            shape: BoxShape.circle,
-                          ),
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.call,
-                            size: 20,
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        hintText: 'Enter phone Number',
-                      ),
-                    ),
-                  ),
-                  const Gap(14),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: TextField(
-                      controller: password,
-                      decoration: InputDecoration(
-                        label: Container(
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(
-                            color: AppColor.white,
-                            shape: BoxShape.circle,
-                          ),
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.lock,
-                            size: 20,
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        hintText: 'Password',
-                      ),
-                    ),
-                  ),
-                  const Gap(10),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Container(
-                      width: width,
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.toNamed('/forgot');
-                        },
-                        child: Text(
-                          'Forgot Password?',
-                          textAlign: TextAlign.right,
-                          style: GoogleFonts.roboto(
-                            fontWeight: FontWeight.w100,
-                            color: AppColor.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Gap(10),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Container(
-                      height: 50,
-                      width: width,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: AppColor.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            blurRadius: 2,
-                            offset: Offset(0, 3),
-                          ),
-                        ],
-                      ),
+              child: Form(
+                key: formkey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Gap(90),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
                       child: Text(
                         'Login',
                         style: GoogleFonts.roboto(
-                          color: AppColor.primary,
+                          fontSize: 26,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          color: AppColor.white,
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Text(
+                        'Please Sign in to Continue.',
+                        style: GoogleFonts.roboto(
+                          fontSize: 16,
+                          // fontWeight: FontWeight.bold,
+                          color: AppColor.white,
+                        ),
+                      ),
+                    ),
+                    const Gap(40),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: TextFormField(
+                        controller: phone,
+                        decoration: InputDecoration(
+                          label: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              shape: BoxShape.circle,
+                            ),
+                            alignment: Alignment.center,
+                            child: Icon(
+                              Icons.call,
+                              size: 20,
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: 'Enter phone Number',
+                        ),
+                        validator: (num) {
+                          if (phone.text.isEmpty) {
+                            return 'Enter number';
+                          } else if (phone.text.length != 10) {
+                            return 'Enter a valid number';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const Gap(14),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: TextFormField(
+                        controller: password,
+                        decoration: InputDecoration(
+                          label: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              shape: BoxShape.circle,
+                            ),
+                            alignment: Alignment.center,
+                            child: Icon(
+                              Icons.lock,
+                              size: 20,
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: 'Password',
+                        ),
+                        validator: (pass) {
+                          if (password.text.isEmpty) {
+                            return 'Enter password';
+                          } else if (password.text.length < 8) {
+                            return 'password length must be 8 or 8+';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const Gap(10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        width: width,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed('/forgot');
+                          },
+                          child: Text(
+                            'Forgot Password?',
+                            textAlign: TextAlign.right,
+                            style: GoogleFonts.roboto(
+                              fontWeight: FontWeight.w100,
+                              color: AppColor.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Gap(10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: GestureDetector(
+                        onTap: () async {
+                          var key = formkey.currentState!;
+                          if (key.validate()) {
+                            // await FirebaseAuth.instance.signInWithPhoneNumber(
+
+                            // phoneNumber: '+91${phone.text.toString()}',
+                            // verificationCompleted:
+                            //     (PhoneAuthCredential credential) async {
+                            //   await FirebaseAuth.instance
+                            //       .signInWithCredential(credential);
+                            // },
+                            // verificationFailed: (FirebaseAuthException e) {
+                            //   if (e.code == 'invalid-phone-number') {
+                            //     print(
+                            //         'The provided phone number is not valid.');
+                            //   }
+                            // },
+                            // codeSent:
+                            //     (String verificationId, int? resendToken) {},
+                            // codeAutoRetrievalTimeout:
+                            //     (String verificationId) {},
+                            // );
+                          }
+                        },
+                        child: Container(
+                          height: 50,
+                          width: width,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: AppColor.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black26,
+                                blurRadius: 2,
+                                offset: Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: Text(
+                            'Login',
+                            style: GoogleFonts.roboto(
+                              color: AppColor.primary,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Text('Or Login With'),

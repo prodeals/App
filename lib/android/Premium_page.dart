@@ -1,11 +1,67 @@
+import 'dart:convert';
+
+import 'package:crypto/crypto.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:phonepe_payment_sdk/phonepe_payment_sdk.dart';
 import 'package:pro_deals1/utils/colors.dart';
 
-class premium_page extends StatelessWidget {
+class premium_page extends StatefulWidget {
   const premium_page({super.key});
+
+  @override
+  State<premium_page> createState() => _premium_pageState();
+}
+
+class _premium_pageState extends State<premium_page> {
+  String environment = "SANDBOX";
+  String appId = "";
+  String merchantId = "PGTESTPAYUAT";
+  bool enableLogging = true;
+  String checksum = "";
+
+  String saltkey = "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
+
+  String saltindex = "1";
+
+  String callback = "";
+
+  String body = "";
+  String apiEndPoint = "/pg/v1/pay";
+
+  Object? result;
+
+  getChecksum() {
+    final reqData = {
+      "merchantId": merchantId,
+      "merchantTransactionId": "MT7850590068188104",
+      "merchantUserId": "MUID123",
+      "amount": 10000,
+      "callbackUrl": "https://webhook.site/callback-url",
+      "mobileNumber": "9999999999",
+      "paymentInstrument": {"type": "PAY_PAGE"}
+    };
+
+    String base64body = base64.encode(utf8.encode(json.encode(reqData)));
+
+    checksum =
+        "${sha256.convert(utf8.encode(base64body + apiEndPoint + saltkey)).toString()}###$saltindex";
+
+    return base64body;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    phonepeInit();
+
+    body = getChecksum().toString();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +79,9 @@ class premium_page extends StatelessWidget {
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.back();
+          },
           icon: Icon(Icons.arrow_back_ios),
         ),
         actions: [
@@ -169,25 +227,32 @@ class premium_page extends StatelessWidget {
                     right: 0,
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 12.0, right: 20),
-                      child: Row(
-                        children: [
-                          Text(
-                            'CHOOSE PLAN',
-                            style: GoogleFonts.roboto(
-                              fontWeight: FontWeight.w500,
-                              color: AppColor.primary,
-                              fontSize: 16,
+                      child: GestureDetector(
+                        onTap: () {
+                          startPgTransaction();
+
+                          print(result);
+                        },
+                        child: Row(
+                          children: [
+                            Text(
+                              'CHOOSE PLAN',
+                              style: GoogleFonts.roboto(
+                                fontWeight: FontWeight.w500,
+                                color: AppColor.primary,
+                                fontSize: 16,
+                              ),
                             ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.arrow_forward_ios_outlined,
-                              color: AppColor.primary,
-                              size: 20,
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.arrow_forward_ios_outlined,
+                                color: AppColor.primary,
+                                size: 20,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -327,25 +392,30 @@ class premium_page extends StatelessWidget {
                     right: 0,
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 12.0, right: 20),
-                      child: Row(
-                        children: [
-                          Text(
-                            'CHOOSE PLAN',
-                            style: GoogleFonts.roboto(
-                              fontWeight: FontWeight.w500,
-                              color: AppColor.primary,
-                              fontSize: 16,
+                      child: GestureDetector(
+                        onTap: () {
+                          startPgTransaction();
+                        },
+                        child: Row(
+                          children: [
+                            Text(
+                              'CHOOSE PLAN',
+                              style: GoogleFonts.roboto(
+                                fontWeight: FontWeight.w500,
+                                color: AppColor.primary,
+                                fontSize: 16,
+                              ),
                             ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.arrow_forward_ios_outlined,
-                              color: AppColor.primary,
-                              size: 20,
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.arrow_forward_ios_outlined,
+                                color: AppColor.primary,
+                                size: 20,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -485,25 +555,31 @@ class premium_page extends StatelessWidget {
                     right: 0,
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 12.0, right: 20),
-                      child: Row(
-                        children: [
-                          Text(
-                            'CHOOSE PLAN',
-                            style: GoogleFonts.roboto(
-                              fontWeight: FontWeight.w500,
-                              color: AppColor.primary,
-                              fontSize: 16,
+                      child: GestureDetector(
+                        onTap: () {
+                          startPgTransaction();
+                          print("result : $result");
+                        },
+                        child: Row(
+                          children: [
+                            Text(
+                              'CHOOSE PLAN',
+                              style: GoogleFonts.roboto(
+                                fontWeight: FontWeight.w500,
+                                color: AppColor.primary,
+                                fontSize: 16,
+                              ),
                             ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.arrow_forward_ios_outlined,
-                              color: AppColor.primary,
-                              size: 20,
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.arrow_forward_ios_outlined,
+                                color: AppColor.primary,
+                                size: 20,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -515,5 +591,54 @@ class premium_page extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void phonepeInit() {
+    PhonePePaymentSdk.init(environment, appId, merchantId, enableLogging)
+        .then((val) => {
+              setState(() {
+                result = 'PhonePe SDK Initialized - $val';
+                print(result);
+              })
+            })
+        .catchError((error) {
+      handleError(error);
+      return <dynamic>{};
+    });
+  }
+
+  void startPgTransaction() async {
+    try {
+      print("this is $body");
+      PhonePePaymentSdk.startTransaction(body, callback, checksum, "")
+          .then((response) => {
+                setState(() {
+                  if (response != null) {
+                    String status = response['status'].toString();
+                    String error = response['error'].toString();
+                    if (status == 'SUCCESS') {
+                      result = "Flow Completed - Status: Success!";
+                    } else {
+                      result =
+                          "Flow Completed - Status: $status and Error: $error";
+                    }
+                  } else {
+                    result = "Flow Incomplete";
+                  }
+                })
+              })
+          .catchError((error) {
+        handleError(error);
+        return <dynamic>{};
+      });
+    } catch (error) {
+      handleError(error);
+    }
+  }
+
+  void handleError(error) {
+    setState(() {
+      result = {"error": error};
+    });
   }
 }

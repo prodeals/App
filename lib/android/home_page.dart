@@ -802,7 +802,9 @@ class home_page extends StatelessWidget {
           useMaterial3: false,
         ),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed("/Premium");
+          },
           backgroundColor: AppColor.primary,
           child: SvgPicture.asset('assets/icons/Vector.svg'),
         ),

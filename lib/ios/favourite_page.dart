@@ -28,15 +28,45 @@ class favourite extends StatelessWidget {
           child: Column(
             children: [
               Gap(hit / 26),
-              Center(
-                child: Text(
-                  'Filter',
-                  style: GoogleFonts.openSans(
-                    color: AppColor.black300,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+              Stack(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Container(
+                      height: 24,
+                      width: 24,
+                      decoration: BoxDecoration(
+                        color: AppColor.white,
+                        borderRadius: BorderRadius.circular(4),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(0, 0),
+                            blurRadius: 2,
+                            spreadRadius: 0,
+                            color: AppColor.gray,
+                          ),
+                        ],
+                      ),
+                      child: Icon(
+                        CupertinoIcons.arrow_left,
+                        size: 16,
+                        color: AppColor.black300,
+                      ),
+                    ),
                   ),
-                ),
+                  Center(
+                    child: Text(
+                      'Favourite',
+                      style: TextStyle(
+                        color: AppColor.black300,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const Gap(20),
               Obx(

@@ -342,59 +342,69 @@ class profile_page extends StatelessWidget {
                             ),
                           ),
                           const Gap(20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.edit_square,
-                                    color: AppColor.gray,
-                                  ),
-                                  const Gap(10),
-                                  Text(
-                                    'Register your Business',
-                                    style: GoogleFonts.openSans(
-                                      fontSize: 16,
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed('/create_business');
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.edit_square,
                                       color: AppColor.gray,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                color: AppColor.gray,
-                                size: 20,
-                              ),
-                            ],
+                                    const Gap(10),
+                                    Text(
+                                      'Register your Business',
+                                      style: GoogleFonts.openSans(
+                                        fontSize: 16,
+                                        color: AppColor.gray,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: AppColor.gray,
+                                  size: 20,
+                                ),
+                              ],
+                            ),
                           ),
                           const Gap(40),
-                          Center(
-                            child: Container(
-                              height: 36,
-                              width: 156,
-                              decoration: BoxDecoration(
-                                color: AppColor.primary,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.logout,
-                                    size: 20,
-                                    color: AppColor.white,
-                                  ),
-                                  const Gap(10),
-                                  Text(
-                                    'Logout',
-                                    style: GoogleFonts.openSans(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
+                          GestureDetector(
+                            onTap: () {
+                              Get.offNamedUntil('/login', (route) => false);
+                            },
+                            child: Center(
+                              child: Container(
+                                height: 36,
+                                width: 156,
+                                decoration: BoxDecoration(
+                                  color: AppColor.primary,
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.logout,
+                                      size: 20,
                                       color: AppColor.white,
                                     ),
-                                  ),
-                                ],
+                                    const Gap(10),
+                                    Text(
+                                      'Logout',
+                                      style: GoogleFonts.openSans(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColor.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
