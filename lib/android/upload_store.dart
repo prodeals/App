@@ -6,14 +6,14 @@ import 'package:get/get.dart';
 import '../widget/imagepicker.dart';
 import '../widget/my_button.dart';
 
-class upload_store extends StatefulWidget {
-  const upload_store({super.key});
+class UploadStore extends StatefulWidget {
+  const UploadStore({super.key});
 
   @override
-  State<upload_store> createState() => _upload_storeState();
+  State<UploadStore> createState() => _UploadStoreState();
 }
 
-class _upload_storeState extends State<upload_store> {
+class _UploadStoreState extends State<UploadStore> {
   @override
   Widget build(BuildContext context) {
     double hit = MediaQuery.of(context).size.height;
@@ -27,7 +27,7 @@ class _upload_storeState extends State<upload_store> {
         centerTitle: true,
         leading: IconButton(
             onPressed: () {
-              Get.toNamed('/Profession_details');
+              Get.back();
             },
             icon: const Icon(Icons.arrow_back)),
         backgroundColor: const Color.fromARGB(255, 214, 170, 38),

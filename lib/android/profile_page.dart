@@ -1,23 +1,53 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_deals1/utils/colors.dart';
 
-class profile_page extends StatelessWidget {
-  const profile_page({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     double hit = MediaQuery.of(context).size.height;
     double wid = MediaQuery.of(context).size.width;
+
+    void _showBusinessRequestDialog() {
+      showDialog(
+        context: context,
+        barrierDismissible: false, // Prevent closing by tapping outside
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Request Business Registration'),
+            content:
+                Text('Do you want to send a request to create a business?'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // Close the dialog
+                },
+                child: Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // Close the dialog
+                  Get.toNamed(
+                      '/create_business'); // Navigate to business creation page
+                },
+                child: Text('Yes'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
         centerTitle: true,
         backgroundColor: AppColor.primary,
+        leading: SizedBox(),
       ),
       body: SingleChildScrollView(
         child: Stack(
@@ -135,7 +165,7 @@ class profile_page extends StatelessWidget {
                           const Gap(20),
                           InkWell(
                             onTap: () {
-                              Get.toNamed('/address');
+                              Get.toNamed('/DeliveryAddress');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -167,7 +197,7 @@ class profile_page extends StatelessWidget {
                           const Gap(20),
                           GestureDetector(
                             onTap: () {
-                              Get.toNamed('/Favourite');
+                              Get.toNamed('/myFavourite');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -197,31 +227,36 @@ class profile_page extends StatelessWidget {
                             ),
                           ),
                           const Gap(20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.history_edu,
-                                    color: AppColor.gray,
-                                  ),
-                                  const Gap(10),
-                                  Text(
-                                    'Order History',
-                                    style: GoogleFonts.openSans(
-                                      fontSize: 16,
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed('/offer');
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.history_edu,
                                       color: AppColor.gray,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                color: AppColor.gray,
-                                size: 20,
-                              ),
-                            ],
+                                    const Gap(10),
+                                    Text(
+                                      'Order History',
+                                      style: GoogleFonts.openSans(
+                                        fontSize: 16,
+                                        color: AppColor.gray,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: AppColor.gray,
+                                  size: 20,
+                                ),
+                              ],
+                            ),
                           ),
                           const Gap(20),
                           InkWell(
@@ -312,7 +347,7 @@ class profile_page extends StatelessWidget {
                           const Gap(20),
                           InkWell(
                             onTap: () {
-                              Get.toNamed('/Support');
+                              Get.toNamed('/support');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -344,7 +379,7 @@ class profile_page extends StatelessWidget {
                           const Gap(20),
                           InkWell(
                             onTap: () {
-                              Get.toNamed('/create_business');
+                              _showBusinessRequestDialog();
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

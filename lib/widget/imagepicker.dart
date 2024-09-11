@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerContainer extends StatefulWidget {
@@ -49,7 +50,7 @@ class _ImagePickerContainerState extends State<ImagePickerContainer> {
                   child: Material(
                     color: Colors.transparent,
                     child: Image.asset(
-                      "assets/image/Group 3747.png",
+                      "assets/images/Group 3747.png",
                     ),
                   ),
                 ),
@@ -62,59 +63,119 @@ class _ImagePickerContainerState extends State<ImagePickerContainer> {
 
   void imagePicker(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: Colors.white,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
       context: context,
       builder: (builder) {
-        return Padding(
+        return Container(
           padding: const EdgeInsets.all(18.0),
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height / 4.5,
-            width: MediaQuery.of(context).size.width,
-            child: Row(
-              children: [
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      _pickImageFromGallery();
-                    },
-                    child: const SizedBox(
-                      child: Column(
-                        children: [
-                          Icon(
-                            Icons.image,
-                            size: 70,
-                          ),
-                          Text("Gallery"),
-                        ],
-                      ),
-                    ),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                offset: Offset(0, -4),
+                blurRadius: 10.0,
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "Select Image Source",
+                style: GoogleFonts.openSans(
+                  textStyle: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black87,
                   ),
                 ),
-                Expanded(
-                  child: InkWell(
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _buildOption(
+                    context: context,
+                    icon: Icons.image,
+                    label: "Gallery",
+                    onTap: () {
+                      _pickImageFromGallery();
+                      Navigator.pop(context);
+                    },
+                    gradientColors: [Colors.purple, Colors.pink],
+                  ),
+                  _buildOption(
+                    context: context,
+                    icon: Icons.camera_alt_sharp,
+                    label: "Camera",
                     onTap: () {
                       _pickImageFromCamera();
+                      Navigator.pop(context);
                     },
-                    child: const SizedBox(
-                      child: Column(
-                        children: [
-                          Icon(
-                            Icons.camera_alt_sharp,
-                            size: 70,
-                          ),
-                          Text("Camera"),
-                        ],
-                      ),
-                    ),
+                    gradientColors: [Colors.blue, Colors.green],
                   ),
-                )
-              ],
-            ),
+                ],
+              )
+            ],
           ),
         );
       },
     );
   }
+
+  Widget _buildOption({
+    required BuildContext context,
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
+    required List<Color> gradientColors,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: 100,
+        width: 120,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          gradient: LinearGradient(
+            colors: gradientColors,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              offset: Offset(0, 4),
+              blurRadius: 8.0,
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 50,
+              color: Colors.white,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
 
   Future<void> _pickImageFromGallery() async {
     final imagePicker = ImagePicker();
@@ -130,8 +191,6 @@ class _ImagePickerContainerState extends State<ImagePickerContainer> {
       selectedImage = imageFile;
       _image = Uint8List.fromList(imageBytes);
     });
-
-    Navigator.of(context).pop();
   }
 
   Future<void> _pickImageFromCamera() async {
@@ -148,6 +207,5 @@ class _ImagePickerContainerState extends State<ImagePickerContainer> {
       _image = Uint8List.fromList(imageBytes);
     });
 
-    Navigator.of(context).pop();
   }
 }

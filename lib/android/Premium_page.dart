@@ -37,8 +37,8 @@ class _premium_pageState extends State<premium_page> {
   getChecksum() {
     final reqData = {
       "merchantId": merchantId,
-      "merchantTransactionId": "MT7850590068188104",
-      "merchantUserId": "MUID123",
+      "merchantTransactionId": "transaction_123",
+      "merchantUserId": "90223250",
       "amount": 10000,
       "callbackUrl": "https://webhook.site/callback-url",
       "mobileNumber": "9999999999",
@@ -48,7 +48,7 @@ class _premium_pageState extends State<premium_page> {
     String base64body = base64.encode(utf8.encode(json.encode(reqData)));
 
     checksum =
-        "${sha256.convert(utf8.encode(base64body + apiEndPoint + saltkey)).toString()}###$saltindex";
+        '${sha256.convert(utf8.encode(base64body + apiEndPoint + saltkey)).toString()}###$saltindex';
 
     return base64body;
   }
@@ -60,7 +60,7 @@ class _premium_pageState extends State<premium_page> {
 
     phonepeInit();
 
-    body = getChecksum().toString();
+    body = getChecksum();
   }
 
   @override
@@ -82,17 +82,19 @@ class _premium_pageState extends State<premium_page> {
           onPressed: () {
             Get.back();
           },
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
         ),
         actions: [
           IconButton(
-              onPressed: () {}, icon: Icon(Icons.notifications_active_outlined))
+            onPressed: () {},
+            icon: const Icon(Icons.notifications_active_outlined),
+          ),
         ],
       ),
       body: Container(
         height: hit,
         width: wid,
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             Container(
@@ -164,12 +166,12 @@ class _premium_pageState extends State<premium_page> {
                           Row(
                             children: [
                               Transform.rotate(
+                                angle: 40,
                                 child: Icon(
                                   Icons.add_circle_outline,
                                   color: AppColor.primary,
                                   size: 16,
                                 ),
-                                angle: 40,
                               ),
                               Text(
                                 'Lorem ipsum dolor',
@@ -184,12 +186,12 @@ class _premium_pageState extends State<premium_page> {
                           Row(
                             children: [
                               Transform.rotate(
+                                angle: 40,
                                 child: Icon(
                                   Icons.add_circle_outline,
                                   color: AppColor.primary,
                                   size: 16,
                                 ),
-                                angle: 40,
                               ),
                               Text(
                                 'Lorem ipsum dolor',
@@ -329,12 +331,12 @@ class _premium_pageState extends State<premium_page> {
                           Row(
                             children: [
                               Transform.rotate(
+                                angle: 40,
                                 child: Icon(
                                   Icons.add_circle_outline,
                                   color: AppColor.primary,
                                   size: 16,
                                 ),
-                                angle: 40,
                               ),
                               Text(
                                 'Lorem ipsum dolor',
@@ -349,12 +351,12 @@ class _premium_pageState extends State<premium_page> {
                           Row(
                             children: [
                               Transform.rotate(
+                                angle: 40,
                                 child: Icon(
                                   Icons.add_circle_outline,
                                   color: AppColor.primary,
                                   size: 16,
                                 ),
-                                angle: 40,
                               ),
                               Text(
                                 'Lorem ipsum dolor',
@@ -492,12 +494,12 @@ class _premium_pageState extends State<premium_page> {
                           Row(
                             children: [
                               Transform.rotate(
+                                angle: 40,
                                 child: Icon(
                                   Icons.add_circle_outline,
                                   color: AppColor.primary,
                                   size: 16,
                                 ),
-                                angle: 40,
                               ),
                               Text(
                                 'Lorem ipsum dolor',
@@ -512,12 +514,12 @@ class _premium_pageState extends State<premium_page> {
                           Row(
                             children: [
                               Transform.rotate(
+                                angle: 40,
                                 child: Icon(
                                   Icons.add_circle_outline,
                                   color: AppColor.primary,
                                   size: 16,
                                 ),
-                                angle: 40,
                               ),
                               Text(
                                 'Lorem ipsum dolor',
@@ -621,6 +623,8 @@ class _premium_pageState extends State<premium_page> {
                     } else {
                       result =
                           "Flow Completed - Status: $status and Error: $error";
+
+                      print(result);
                     }
                   } else {
                     result = "Flow Incomplete";
@@ -633,6 +637,7 @@ class _premium_pageState extends State<premium_page> {
       });
     } catch (error) {
       handleError(error);
+      print("----------------------");
     }
   }
 

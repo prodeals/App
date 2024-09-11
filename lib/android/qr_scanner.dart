@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:pro_deals1/utils/colors.dart';
 
@@ -17,7 +18,16 @@ class qr_scanner extends StatelessWidget {
         title: const Text('Scan QR Code'),
         centerTitle: true,
         backgroundColor: AppColor.primary,
-        actions: [Icon(Icons.qr_code_scanner)],
+        leading: SizedBox(),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.qr_code_scanner),
+            onPressed: () {
+              Get.toNamed('/QRcode');
+            },
+          ),
+          Gap(16),
+        ],
         elevation: 0,
       ),
       body: Container(
@@ -44,6 +54,7 @@ class qr_scanner extends StatelessWidget {
                         BoxDecoration(borderRadius: BorderRadius.circular(10)),
                     child: MobileScanner(
                       onDetect: (barcodes) {
+                        // print(barcodes);
                         if (!isCodeScanned) {
                           String code = barcodes.raw ?? '---';
                           print(code);
@@ -80,11 +91,12 @@ class qr_scanner extends StatelessWidget {
               ),
               alignment: Alignment.center,
               child: Text(
-                'Scannig...',
+                'Scanning...',
                 style: TextStyle(
-                    color: AppColor.primary,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                  color: AppColor.primary,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],

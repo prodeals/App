@@ -45,8 +45,7 @@ class _ios_businessProfileState extends State<ios_businessProfile> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        // Navigator.pushReplacement(context,
-                        //     MaterialPageRoute(builder: (_) => ios_detail()));
+                        Get.back();
                       },
                       icon: const Icon(
                         Icons.arrow_back,

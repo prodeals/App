@@ -4,17 +4,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../widget/my_drawer.dart';
-import 'bar chart .dart';
-import 'roundbarchar.dart';
+import 'barchart.dart';
+import 'round_bar_chart.dart';
 
-class earning extends StatefulWidget {
-  const earning({super.key});
+class Earning extends StatefulWidget {
+  const Earning({super.key});
 
   @override
-  State<earning> createState() => _earningState();
+  State<Earning> createState() => _EarningState();
 }
 
-class _earningState extends State<earning> {
+class _EarningState extends State<Earning> {
   @override
   Widget build(BuildContext context) {
     Color color7 = const Color(0xFF6BB5FA); // Blue color
@@ -62,51 +62,51 @@ class _earningState extends State<earning> {
               const Gap(20),
               Center(
                 child: Container(
-                    width: wid / 1.08,
-                    height: hit / 2.70,
-                    decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                              blurStyle: BlurStyle.normal,
-                              blurRadius: 1,
-                              spreadRadius: 0)
-                        ],
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Gap(10),
-                        Text(
-                          '   Revenue ',
-                          style: GoogleFonts.openSans(
-                            textStyle: Theme.of(context).textTheme.displayLarge,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                            fontStyle: FontStyle.normal,
-                          ),
+                  width: wid / 1.08,
+                  height: hit / 2.70,
+                  decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                            blurStyle: BlurStyle.normal,
+                            blurRadius: 1,
+                            spreadRadius: 0)
+                      ],
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Gap(10),
+                      Text(
+                        '   Revenue ',
+                        style: GoogleFonts.openSans(
+                          textStyle: Theme.of(context).textTheme.displayLarge,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          fontStyle: FontStyle.normal,
                         ),
-                        Container(
-                          width: wid / 1.10,
-                          height: hit / 3.20,
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 250,
-                                width: 400,
-                                child: SfRadialGauge(
-                                  axes: [
-                                    RadialAxis(
-                                      showLabels: false,
-                                      startAngle: 180,
-                                      endAngle: 0,
-                                      interval: 100,
-                                      canScaleToFit: true,
-                                      minimum: 0,
-                                      maximum: 100,
-                                      annotations: <GaugeAnnotation>[
-                                        GaugeAnnotation(
-                                            widget: Container(
+                      ),
+                      Container(
+                        width: wid / 1.10,
+                        height: hit / 3.20,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 250,
+                              width: 400,
+                              child: SfRadialGauge(
+                                axes: [
+                                  RadialAxis(
+                                    showLabels: false,
+                                    startAngle: 180,
+                                    endAngle: 0,
+                                    interval: 100,
+                                    canScaleToFit: true,
+                                    minimum: 0,
+                                    maximum: 100,
+                                    annotations: <GaugeAnnotation>[
+                                      GaugeAnnotation(
+                                        widget: Container(
                                           child: Stack(
                                             alignment: Alignment.bottomCenter,
                                             children: [
@@ -196,41 +196,43 @@ class _earningState extends State<earning> {
                                               )
                                             ],
                                           ),
-                                        ))
-                                      ],
-                                      pointers: <GaugePointer>[
-                                        const NeedlePointer(
-                                          needleLength: 2,
-                                          value: 60,
-                                          enableAnimation: false,
-                                        )
-                                      ],
-                                      ranges: [
-                                        GaugeRange(
-                                            startValue: 0,
-                                            endValue: 60,
-                                            color: color,
-                                            sizeUnit: GaugeSizeUnit.factor,
-                                            startWidth: 0.26,
-                                            endWidth: 0.26),
-                                        GaugeRange(
-                                          startValue: 60,
+                                        ),
+                                      ),
+                                    ],
+                                    pointers: <GaugePointer>[
+                                      const NeedlePointer(
+                                        needleLength: 2,
+                                        value: 60,
+                                        enableAnimation: false,
+                                      )
+                                    ],
+                                    ranges: [
+                                      GaugeRange(
+                                          startValue: 0,
+                                          endValue: 60,
+                                          color: color,
                                           sizeUnit: GaugeSizeUnit.factor,
                                           startWidth: 0.26,
-                                          endWidth: 0.26,
-                                          endValue: 100,
-                                          color: color9,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                          endWidth: 0.26),
+                                      GaugeRange(
+                                        startValue: 60,
+                                        sizeUnit: GaugeSizeUnit.factor,
+                                        startWidth: 0.26,
+                                        endWidth: 0.26,
+                                        endValue: 100,
+                                        color: color9,
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    )),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               const Gap(20),
               Center(
@@ -304,48 +306,49 @@ class _earningState extends State<earning> {
               const Gap(20),
               Center(
                 child: Container(
-                    width: wid / 1.08,
-                    height: 360,
-                    decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                              blurStyle: BlurStyle.normal,
-                              blurRadius: 1,
-                              spreadRadius: 0)
-                        ],
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    child: Column(
-                      children: [
-                        const Gap(10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Sales Chart ',
-                              style: GoogleFonts.openSans(
-                                textStyle:
-                                    Theme.of(context).textTheme.displayLarge,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                                fontStyle: FontStyle.normal,
-                              ),
-                            ),
-                            Text(
-                              '₹ 9,45,570  ',
-                              style: GoogleFonts.openSans(
-                                textStyle:
-                                    Theme.of(context).textTheme.displayLarge,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                                fontStyle: FontStyle.normal,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const barchart()
+                  width: wid / 1.08,
+                  height: 360,
+                  decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                            blurStyle: BlurStyle.normal,
+                            blurRadius: 1,
+                            spreadRadius: 0)
                       ],
-                    )),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white),
+                  child: Column(
+                    children: [
+                      const Gap(10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Sales Chart ',
+                            style: GoogleFonts.openSans(
+                              textStyle:
+                                  Theme.of(context).textTheme.displayLarge,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              fontStyle: FontStyle.normal,
+                            ),
+                          ),
+                          Text(
+                            '₹ 9,45,570  ',
+                            style: GoogleFonts.openSans(
+                              textStyle:
+                                  Theme.of(context).textTheme.displayLarge,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              fontStyle: FontStyle.normal,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const BarChartWidget(),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

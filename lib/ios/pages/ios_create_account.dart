@@ -54,7 +54,9 @@ class _ios_create_accountState extends State<ios_create_account> {
                 Row(
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.back();
+                      },
                       icon: const Icon(
                         Icons.arrow_back,
                         color: Colors.black,

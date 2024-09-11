@@ -8,7 +8,7 @@ import '../utils/colors.dart';
 Widget ios_restaurant(
     {required double hit,
     required double wid,
-    required String tital,
+    required String title,
     required String location,
     required double rating,
     required String time,
@@ -36,7 +36,7 @@ Widget ios_restaurant(
         ),
         const Gap(8),
         Text(
-          tital,
+          title,
           style: GoogleFonts.openSans(
             fontWeight: FontWeight.bold,
             fontSize: 20,

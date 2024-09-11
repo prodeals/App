@@ -141,7 +141,7 @@ Widget drawer(double hit, double wid) {
         const Gap(20),
         GestureDetector(
           onTap: () {
-            Get.toNamed('/order_deshboard');
+            Get.toNamed('/order_dashboard');
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -194,7 +194,9 @@ Widget drawer(double hit, double wid) {
         ),
         const Gap(20),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.offNamed('/total_reqeemed');
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -246,7 +248,9 @@ Widget drawer(double hit, double wid) {
         ),
         const Gap(20),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.toNamed('/QRcode');
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -290,7 +294,7 @@ Widget drawer(double hit, double wid) {
         const Gap(20),
         GestureDetector(
           onTap: () {
-            Get.offNamed('/About_Us');
+            Get.toNamed('/About_Us');
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -317,7 +321,7 @@ Widget drawer(double hit, double wid) {
         const Gap(20),
         GestureDetector(
           onTap: () {
-            Get.offNamed('/Term_condition');
+            Get.toNamed('/Term_condition');
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -344,7 +348,7 @@ Widget drawer(double hit, double wid) {
         const Gap(20),
         GestureDetector(
           onTap: () {
-            Get.offNamed('/Privacy_Policy');
+            Get.toNamed('/Privacy_policy');
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -370,13 +374,17 @@ Widget drawer(double hit, double wid) {
         ),
         const Gap(30),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.toNamed('/login');
+          },
           child: Center(
             child: Container(
               height: 36,
               width: 156,
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(15)),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

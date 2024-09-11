@@ -135,7 +135,7 @@ class support extends StatelessWidget {
               const Gap(10),
               ListTile(
                 onTap: () {
-                  Get.toNamed('/Support_details');
+                  Get.toNamed('/support_details');
                 },
                 leading: CircleAvatar(
                   radius: 30,

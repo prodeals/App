@@ -1,11 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_deals1/utils/colors.dart';
 import 'package:pro_deals1/utils/images.dart';
+
+import '../api/login.dart';
 
 class login extends StatelessWidget {
   login({super.key});
@@ -158,25 +158,10 @@ class login extends StatelessWidget {
                         onTap: () async {
                           var key = formkey.currentState!;
                           if (key.validate()) {
-                            // await FirebaseAuth.instance.signInWithPhoneNumber(
-
-                            // phoneNumber: '+91${phone.text.toString()}',
-                            // verificationCompleted:
-                            //     (PhoneAuthCredential credential) async {
-                            //   await FirebaseAuth.instance
-                            //       .signInWithCredential(credential);
-                            // },
-                            // verificationFailed: (FirebaseAuthException e) {
-                            //   if (e.code == 'invalid-phone-number') {
-                            //     print(
-                            //         'The provided phone number is not valid.');
-                            //   }
-                            // },
-                            // codeSent:
-                            //     (String verificationId, int? resendToken) {},
-                            // codeAutoRetrievalTimeout:
-                            //     (String verificationId) {},
-                            // );
+                            print('object');
+                            loginUser(
+                                email: 'jayviradiya58885@gmail.com',
+                                password: 'jay@123');
                           }
                         },
                         child: Container(

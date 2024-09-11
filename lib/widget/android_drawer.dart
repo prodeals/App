@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/colors.dart';
 
@@ -110,7 +109,7 @@ Widget drawer(double hit, double wid) {
         const Gap(20),
         GestureDetector(
           onTap: () {
-            Get.toNamed('/address');
+            Get.toNamed('/DeliveryAddress');
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -142,7 +141,7 @@ Widget drawer(double hit, double wid) {
         const Gap(20),
         GestureDetector(
           onTap: () {
-            Get.toNamed('/Favourite');
+            Get.toNamed('/myFavourite');
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -174,7 +173,7 @@ Widget drawer(double hit, double wid) {
         const Gap(20),
         GestureDetector(
           onTap: () {
-            Get.toNamed('/create_business');
+            // Get.toNamed('/create_business');
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -238,7 +237,7 @@ Widget drawer(double hit, double wid) {
         const Gap(20),
         GestureDetector(
           onTap: () {
-            Get.toNamed('/create_business');
+            // Get.toNamed('/create_business');
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -270,7 +269,7 @@ Widget drawer(double hit, double wid) {
         const Gap(20),
         GestureDetector(
           onTap: () {
-            Get.toNamed('/create_business');
+            // Get.toNamed('/create_business');
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -302,7 +301,7 @@ Widget drawer(double hit, double wid) {
         const Gap(20),
         GestureDetector(
           onTap: () {
-            Get.toNamed('/Support');
+            Get.toNamed('/support');
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -365,7 +364,9 @@ Widget drawer(double hit, double wid) {
         ),
         const Gap(30),
         GestureDetector(
-          onTap: () {
+          onTap: () async {
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            prefs.setBool('login', false);
             Get.offNamedUntil('/login', (route) => false);
           },
           child: Center(

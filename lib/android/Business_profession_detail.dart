@@ -36,7 +36,7 @@ class _Profession_detailsState extends State<Profession_details> {
         centerTitle: true,
         leading: IconButton(
             onPressed: () {
-              Get.toNamed('/Business_Address');
+              Get.back();
             },
             icon: const Icon(Icons.arrow_back)),
         backgroundColor: const Color.fromARGB(255, 214, 170, 38),

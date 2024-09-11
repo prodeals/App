@@ -269,7 +269,7 @@ class order_deshboard extends StatelessWidget {
               child: PageView(
                 controller: _pageController,
                 children: [
-                  cardList(),
+                  OrderList(),
                   PendingList(),
                   AcceptedList(),
                   CompletedList(),
@@ -282,17 +282,17 @@ class order_deshboard extends StatelessWidget {
     );
   }
 
-  Widget cardList() {
-    bool selectedvalue = false;
-    Color Color3 = const Color(0xFF32801C);
+  Widget OrderList() {
+    bool selectedValue = false;
+
     return ListView(
       children: [
         Row(
           children: [
             Checkbox(
-              value: selectedvalue,
+              value: selectedValue,
               onChanged: (value) {
-                selectedvalue = false;
+                selectedValue = false;
               },
             ),
             const Text(
@@ -305,213 +305,25 @@ class order_deshboard extends StatelessWidget {
             ),
           ],
         ),
-        Card(
-          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: GestureDetector(
-            onTap: () {},
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ListTile(
-                  leading: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/images/pizza2.png',
-                        ),
-                      ),
-                    ),
-                  ),
-                  title: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Cheese Pizza',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                      Text(
-                        '12 feb 2024',
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                    ],
-                  ),
-                  subtitle: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'OID - 663423756342',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                      Text(
-                        '₹ 399',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Divider(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Row(
-                    children: [
-                      Checkbox(
-                        value: selectedvalue,
-                        onChanged: (value) {
-                          selectedvalue = false;
-                        },
-                      ),
-                      const Text(
-                        'Accept',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                      const Spacer(),
-                      Container(
-                        width: 90,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color3,
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'CONFIRM',
-                            style: TextStyle(fontSize: 14, color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+        OrderItem(
+          selectedValue: selectedValue,
+          title: 'Cheese Pizza',
+          date: '12 Feb 2024',
+          orderId: '663423756342',
+          price: '399',
+          onCheckboxChanged: (value) {
+            selectedValue = value ?? false;
+          },
         ),
-        Card(
-          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: GestureDetector(
-            onTap: () {},
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ListTile(
-                  leading: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/images/pizza2.png',
-                        ),
-                      ),
-                    ),
-                  ),
-                  title: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Cheese Pizza',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                      Text(
-                        '12 feb 2024',
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                    ],
-                  ),
-                  subtitle: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'OID - 663423756342',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                      Text(
-                        '₹ 399',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Divider(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Row(
-                    children: [
-                      Checkbox(
-                        value: selectedvalue,
-                        onChanged: (value) {
-                          selectedvalue = false;
-                        },
-                      ),
-                      const Text(
-                        'Accept',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                      const Spacer(),
-                      Container(
-                        width: 90,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color3,
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'CONFIRM',
-                            style: TextStyle(fontSize: 14, color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+        OrderItem(
+          selectedValue: selectedValue,
+          title: 'Cheese Pizza',
+          date: '12 Feb 2024',
+          orderId: '663423756342',
+          price: '399',
+          onCheckboxChanged: (value) {
+            selectedValue = value ?? false;
+          },
         ),
       ],
     );
@@ -872,5 +684,130 @@ class order_deshboard extends StatelessWidget {
             ),
           );
         });
+  }
+}
+
+class OrderItem extends StatelessWidget {
+  final bool selectedValue;
+  final String title;
+  final String date;
+  final String orderId;
+  final String price;
+  final Function(bool?) onCheckboxChanged;
+
+  const OrderItem({
+    Key? key,
+    required this.selectedValue,
+    required this.title,
+    required this.date,
+    required this.orderId,
+    required this.price,
+    required this.onCheckboxChanged,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Color color3 = const Color(0xFF32801C);
+
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: GestureDetector(
+        onTap: () {},
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ListTile(
+              leading: Container(
+                width: 60,
+                height: 60,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/pizza2.png'),
+                  ),
+                ),
+              ),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                    ),
+                  ),
+                  Text(
+                    date,
+                    style: const TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                    ),
+                  ),
+                ],
+              ),
+              subtitle: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'OID - $orderId',
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                    ),
+                  ),
+                  Text(
+                    '₹ $price',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Divider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Row(
+                children: [
+                  Checkbox(
+                    value: selectedValue,
+                    onChanged: onCheckboxChanged,
+                  ),
+                  const Text(
+                    'Accept',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                    ),
+                  ),
+                  const Spacer(),
+                  Container(
+                    width: 90,
+                    height: 35,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: color3,
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'CONFIRM',
+                        style: TextStyle(fontSize: 14, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

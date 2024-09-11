@@ -104,7 +104,7 @@ class DeliveryAddress extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.toNamed('/add_address');
+          Get.toNamed('/AddAddress');
         },
         child: const Icon(CupertinoIcons.add),
         backgroundColor: AppColor.primary,

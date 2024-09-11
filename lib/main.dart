@@ -1,98 +1,49 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pro_deals1/android/QR.dart';
+import 'package:pro_deals1/android/map.dart';
+import 'package:pro_deals1/android/offer.dart';
+import 'package:pro_deals1/ios/iosNotification.dart';
 import 'package:pro_deals1/ios/promocode_details.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'android/About Us.dart';
-import 'android/Active_offers.dart';
-import 'android/Business_address.dart';
-import 'android/Business_profession_detail.dart';
-import 'android/Business_profil.dart';
-import 'android/DeliveryAddress.dart';
-import 'android/Earning.dart';
-import 'android/Filter.dart';
-import 'android/Manage_offer.dart';
-import 'android/MyCart.dart';
-import 'android/MyFavourite.dart';
-import 'android/Notification.dart';
-import 'android/Premium_page.dart';
-import 'android/Privay_policy.dart';
-import 'android/Search.dart';
-import 'android/Support.dart';
-import 'android/Term & Condition.dart';
-import 'android/Verify_identify.dart';
-import 'android/add_address.dart';
-import 'android/categories.dart';
-import 'android/coupons.dart';
-import 'android/create_business.dart';
-import 'android/dashboard.dart';
-import 'android/details_page.dart';
-import 'android/edit_profile.dart';
-import 'android/forgot_pass.dart';
-import 'android/home_page.dart';
-import 'android/intro.dart';
-import 'android/login.dart';
-import 'android/navigation.dart';
-import 'android/order_deshboard.dart';
-import 'android/otp_Verification.dart';
-import 'android/profile_page.dart';
-import 'android/qr_scanner.dart';
-import 'android/register.dart';
-import 'android/shope_page.dart';
-import 'android/successfully.dart';
-import 'android/suport_details.dart';
-import 'android/upload_store.dart';
-import 'firebase_options.dart';
-import 'ios/add_address.dart';
-import 'ios/confirm_page.dart';
-import 'ios/edit_profile.dart';
+import 'api/user.dart';
+import 'imports.dart';
 import 'ios/favourite_page.dart';
-import 'ios/intro.dart';
-import 'ios/ios_Ans.dart';
-import 'ios/ios_address_page.dart';
-import 'ios/ios_cart.dart';
-import 'ios/ios_category.dart';
-import 'ios/ios_filter.dart';
-import 'ios/ios_home_page.dart';
-import 'ios/ios_login.dart';
-import 'ios/ios_otp.dart';
-import 'ios/ios_profile.dart';
-import 'ios/ios_promocode.dart';
-import 'ios/ios_qr.dart';
-import 'ios/ios_sign_up.dart';
-import 'ios/ios_support_center.dart';
-import 'ios/navigation.dart';
-import 'ios/pages/Earning.dart';
-import 'ios/pages/Privacy_policy.dart';
-import 'ios/pages/Terms & Condition.dart';
-import 'ios/pages/dashborad.dart';
-import 'ios/pages/ios_about_us.dart';
-import 'ios/pages/ios_active_offers.dart';
-import 'ios/pages/ios_address.dart';
-import 'ios/pages/ios_create_account.dart';
-import 'ios/pages/ios_details.dart';
-import 'ios/pages/ios_manage_offers.dart';
-import 'ios/pages/ios_profile.dart';
-import 'ios/pages/ios_syccessfully.dart';
-import 'ios/pages/ios_verify.dart';
-import 'ios/pages/ios_work_place_images.dart';
 import 'ios/pages/overview.dart';
-import 'ios/pages/total order.dart';
-import 'ios/promocode.dart';
-import 'ios/scan_qr.dart';
 import 'splash.dart';
 import 'utils/constunt.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(
-    const ProDeals(),
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   preferences = await SharedPreferences.getInstance();
+
+  String Data = preferences.getString('userdata') ?? "";
+  if (Data.isNotEmpty) {
+    final data = jsonDecode(Data);
+
+    final body = data['data'];
+
+    id = body['_id'] ?? "";
+
+    getUser(userId: id);
+
+    UserName = body['userName'] ?? "";
+    Email = body['email'] ?? "";
+    Phone = body['phone'] ?? "";
+    isBusiness = body['isBusiness'] ?? false;
+  }
+
+  print(UserName);
+
+  runApp(const ProDeals());
 }
 
 class ProDeals extends StatelessWidget {
@@ -100,345 +51,136 @@ class ProDeals extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Pro Deals",
-      // initialRoute: '/Coupons',
-      initialRoute: '/',
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => const splash(),
-        ),
-        GetPage(
-          name: '/intro',
-          page: () => const intro(),
-        ),
-        GetPage(
-          name: '/login',
-          page: () => login(),
-        ),
-        GetPage(
-          name: '/register',
-          page: () => register(),
-        ),
-        GetPage(
-          name: '/forgot',
-          page: () => const forgot_pass(),
-        ),
-        GetPage(
-          name: '/otp_verification',
-          page: () => otp_verification(),
-        ),
-        GetPage(
-          name: '/navigation',
-          page: () => const navigation(),
-        ),
-        GetPage(
-          name: '/home',
-          page: () => const home_page(),
-        ),
-        GetPage(
-          name: '/Categories',
-          page: () => const categories(),
-        ),
-        GetPage(
-          name: '/cart',
-          page: () => const cart(),
-        ),
-        GetPage(
-          name: '/Premium',
-          page: () => const premium_page(),
-        ),
-        GetPage(
-          name: '/profile',
-          page: () => const profile_page(),
-        ),
-        GetPage(
-          name: '/edit_profile',
-          page: () => const edit_profile(),
-        ),
-        GetPage(
-          name: '/Search',
-          page: () => const search(),
-        ),
-        GetPage(
-          name: '/filter',
-          page: () => const filter(),
-        ),
-        GetPage(
-          name: '/shop',
-          page: () => const shope_page(),
-        ),
-        GetPage(
-          name: '/details',
-          page: () => const details(),
-        ),
-        GetPage(
-          name: '/Favourite',
-          page: () => const Favourite(),
-        ),
-        // GetPage(name: '/', page: page)
-        GetPage(
-          name: '/address',
-          page: () => const DeliveryAddress(),
-        ),
-        GetPage(
-          name: '/add_address',
-          page: () => const add_address(),
-        ),
-        GetPage(
-          name: '/notification',
-          page: () => const notification(),
-        ),
-        GetPage(
-          name: '/Support',
-          page: () => const support(),
-        ),
-        GetPage(
-          name: '/Support_details',
-          page: () => const support_details(),
-        ),
-        GetPage(
-          name: '/qr_scanner',
-          page: () => const qr_scanner(),
-        ),
-        GetPage(
-          name: '/Active_offers',
-          page: () => const Active_offers(),
-        ),
-        GetPage(
-          name: '/Manage_offer',
-          page: () => const Manage_offer(),
-        ),
-        GetPage(
-          name: '/upload_store',
-          page: () => const upload_store(),
-        ),
-        GetPage(
-          name: '/verify',
-          page: () => const verify(),
-        ),
-        GetPage(
-          name: '/successfully',
-          page: () => const successfully(),
-        ),
-        GetPage(
-          name: '/create_business',
-          page: () => create_business(),
-        ),
-        GetPage(
-          name: '/Profession_Profile',
-          page: () => const Profession_Profile(),
-        ),
-        GetPage(
-          name: '/Profession_details',
-          page: () => const Profession_details(),
-        ),
-        GetPage(
-          name: '/Business_Address',
-          page: () => B_Address(),
-        ),
-        GetPage(
-          name: '/deshborad',
-          page: () => const deshborad(),
-        ),
-        GetPage(
-          name: '/earning',
-          page: () => const earning(),
-        ),
-        GetPage(
-          name: '/About_Us',
-          page: () => const About_Us(),
-        ),
-        GetPage(
-          name: '/Term_condition',
-          page: () => const Term_condition(),
-        ),
-        GetPage(
-          name: '/Privacy_Policy',
-          page: () => const Privacy_Policy(),
-        ),
-        GetPage(
-          name: '/order_deshboard',
-          page: () => order_deshboard(),
-        ),
-        GetPage(
-          name: '/Coupons',
-          page: () => const Coupons(),
-        ),
-      ],
-    );
+    if (Platform.isIOS) {
+      return _iosApp();
+    } else {
+      return _androidApp();
+    }
+  }
+
+  Widget _iosApp() {
     return GetCupertinoApp(
       localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+        DefaultCupertinoLocalizations.delegate,
         DefaultMaterialLocalizations.delegate,
         DefaultWidgetsLocalizations.delegate,
       ],
       debugShowCheckedModeBanner: false,
       title: "Pro Deals",
-      // initialRoute: '/ios_create_account',
       initialRoute: '/',
       getPages: [
+        GetPage(name: '/', page: () => const splash()),
+        GetPage(name: '/promocode', page: () => const promocode()),
         GetPage(
-          name: '/',
-          page: () => const splash(),
-        ),
+            name: '/promocodeDetails', page: () => const promocode_details()),
+        GetPage(name: '/ios_home', page: () => const ios_home()),
+        GetPage(name: '/intro', page: () => const ios_intro()),
+        GetPage(name: '/login', page: () => ios_login()),
+        GetPage(name: '/ios_sign_up', page: () => ios_sign_up()),
+        GetPage(name: '/forgot', page: () => const forgot_pass()),
+        GetPage(name: '/ios_otp', page: () => ios_otp()),
+        GetPage(name: '/confirm', page: () => const confirm()),
+        GetPage(name: '/ios_profile', page: () => const ios_profile()),
+        GetPage(name: '/navigation', page: () => const ios_navigation()),
+        GetPage(name: '/ios_filter', page: () => const ios_filter()),
+        GetPage(name: '/ios_category', page: () => const ios_category()),
+        GetPage(name: '/locationios', page: () => const locationios()),
+        GetPage(name: '/ios_restaurants', page: () => const ios_restaurants()),
         GetPage(
-          name: '/promocode',
-          page: () => const promocode(),
-        ),
+            name: '/restaurant_details', page: () => const RestaurantDetails()),
+        GetPage(name: '/product_details', page: () => const FoodDetails()),
+        GetPage(name: '/ios_promocode', page: () => const promocode()),
+        GetPage(name: '/ios_favourite', page: () => const iosFavourite()),
+        GetPage(name: '/edit_profile', page: () => const ios_edit_profile()),
+        GetPage(name: '/ios_cart', page: () => const ios_cart()),
+        GetPage(name: '/ios_support', page: () => const ios_support()),
+        GetPage(name: '/ios_Ans', page: () => const ios_Ans()),
+        GetPage(name: '/ios_qr', page: () => const ios_qr()),
+        GetPage(name: '/ios_scan_qr', page: () => const ios_scan_qr()),
+        GetPage(name: '/ios_address', page: () => const ios_Address()),
+        GetPage(name: '/ios_add_address', page: () => const ios_add_address()),
+        GetPage(name: '/ios_create_account', page: () => ios_create_account()),
+        GetPage(name: '/ios_business_address', page: () => const ios_address()),
+        GetPage(name: '/ios_detail', page: () => const ios_detail()),
+        GetPage(name: '/ios_notification', page: () => iosNotification()),
         GetPage(
-          name: '/promocodeDetails',
-          page: () => const promocode_details(),
-        ),
+            name: '/ios_businessProfile',
+            page: () => const ios_businessProfile()),
+        GetPage(name: '/ios_images', page: () => const ios_images()),
+        GetPage(name: '/ios_verify', page: () => const ios_verify()),
         GetPage(
-          name: '/ios_home',
-          page: () => const ios_home(),
-        ),
+            name: '/ios_successfully', page: () => const ios_successfully()),
+        GetPage(name: '/dashboard', page: () => const dashboard()),
+        GetPage(name: '/ios_about_us', page: () => const ios_about_us()),
+        GetPage(name: '/privacy_policy', page: () => const privacy_policy()),
+        GetPage(name: '/term_conditiom', page: () => const term_conditiom()),
+        GetPage(name: '/ios_active', page: () => const IosActive()),
+        GetPage(name: '/ios_manageoffer', page: () => const ios_manageoffer()),
+        GetPage(name: '/order', page: () => order()),
+        GetPage(name: '/overview_ios', page: () => const overview_ios()),
+        GetPage(name: '/Earning_ios', page: () => const Earning_ios()),
+      ],
+    );
+  }
+
+  Widget _androidApp() {
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Pro Deals",
+      initialRoute: '/',
+      theme: ThemeData(useMaterial3: false),
+      getPages: [
+        GetPage(name: '/', page: () => const splash()),
+        GetPage(name: '/intro', page: () => const Intro()),
+        GetPage(name: '/login', page: () => login()),
+        GetPage(name: '/register', page: () => register()),
+        GetPage(name: '/forgot', page: () => const forgot_pass()),
+        GetPage(name: '/otp_verification', page: () => otp_verification()),
+        GetPage(name: '/navigation', page: () => const navigation()),
+        GetPage(name: '/home', page: () => const home_page()),
+        GetPage(name: '/Categories', page: () => const categories()),
+        GetPage(name: '/cart', page: () => const Cart()),
+        GetPage(name: '/Premium', page: () => const premium_page()),
+        GetPage(name: '/profile', page: () => const ProfilePage()),
+        GetPage(name: '/edit_profile', page: () => const EditProfile()),
+        GetPage(name: '/Search', page: () => const SearchPage()),
+        GetPage(name: '/shopPage', page: () => const shope_page()),
+        GetPage(name: '/detailPage', page: () => const DetailsPage()),
+        GetPage(name: '/Filter', page: () => const FilterPage()),
+        GetPage(name: '/activeOffer', page: () => const Active_offers()),
+        GetPage(name: '/myFavourite', page: () => const Favourite()),
+        GetPage(name: '/qr_scanner', page: () => const qr_scanner()),
+        GetPage(name: '/AddAddress', page: () => const add_address()),
+        GetPage(name: '/DeliveryAddress', page: () => const DeliveryAddress()),
+        GetPage(name: '/earning', page: () => const Earning()),
+        GetPage(name: '/verify', page: () => const verify()),
+        GetPage(name: '/QRcode', page: () => const QRcode()),
+        GetPage(name: '/Coupons', page: () => Coupons()),
         GetPage(
-          name: '/intro',
-          page: () => const ios_intro(),
-        ),
+            name: '/Profession_Profile',
+            page: () => const Profession_Profile()),
         GetPage(
-          name: '/login',
-          page: () => ios_login(),
-        ),
-        GetPage(
-          name: '/ios_sign_up',
-          page: () => ios_sign_up(),
-        ),
-        GetPage(
-          name: '/forgot',
-          page: () => const forgot_pass(),
-        ),
-        GetPage(
-          name: '/ios_otp',
-          page: () => ios_otp(),
-        ),
-        GetPage(
-          name: '/confirm',
-          page: () => const confirm(),
-        ),
-        GetPage(
-          name: '/ios_profile',
-          page: () => const ios_profile(),
-        ),
-        GetPage(
-          name: '/navigation',
-          page: () => const ios_navigation(),
-        ),
-        GetPage(
-          name: '/ios_filter',
-          page: () => const ios_filter(),
-        ),
-        GetPage(
-          name: '/ios_category',
-          page: () => const ios_category(),
-        ),
-        GetPage(
-          name: '/ios_promocode',
-          page: () => const promocode(),
-        ),
-        GetPage(
-          name: '/ios_favourite',
-          page: () => const favourite(),
-        ),
-        GetPage(
-          name: '/edit_profile',
-          page: () => const ios_edit_profile(),
-        ),
-        GetPage(
-          name: '/ios_cart',
-          page: () => const ios_cart(),
-        ),
-        GetPage(
-          name: '/ios_support',
-          page: () => const ios_support(),
-        ),
-        GetPage(
-          name: '/ios_Ans',
-          page: () => const ios_Ans(),
-        ),
-        GetPage(
-          name: '/ios_qr',
-          page: () => const ios_qr(),
-        ),
-        GetPage(
-          name: '/ios_scan_qr',
-          page: () => const ios_scan_qr(),
-        ),
-        GetPage(
-          name: '/ios_address',
-          page: () => const ios_Address(),
-        ),
-        GetPage(
-          name: '/ios_add_address',
-          page: () => const ios_add_address(),
-        ),
-        GetPage(
-          name: '/ios_create_account',
-          page: () => ios_create_account(),
-        ),
-        GetPage(
-          name: '/ios_business_address',
-          page: () => const ios_address(),
-        ),
-        GetPage(
-          name: '/ios_detail',
-          page: () => const ios_detail(),
-        ),
-        GetPage(
-          name: '/ios_businessProfile',
-          page: () => const ios_businessProfile(),
-        ),
-        GetPage(
-          name: '/ios_images',
-          page: () => const ios_images(),
-        ),
-        GetPage(
-          name: '/ios_verify',
-          page: () => const ios_verify(),
-        ),
-        GetPage(
-          name: '/ios_successfully',
-          page: () => const ios_successfully(),
-        ),
-        GetPage(
-          name: '/dashboard',
-          page: () => const dashboard(),
-        ),
-        GetPage(
-          name: '/ios_about_us',
-          page: () => const ios_about_us(),
-        ),
-        GetPage(
-          name: '/privacy_policy',
-          page: () => const privacy_policy(),
-        ),
-        GetPage(
-          name: '/term_conditiom',
-          page: () => const term_conditiom(),
-        ),
-        GetPage(
-          name: '/ios_active',
-          page: () => const ios_active(),
-        ),
-        GetPage(
-          name: '/ios_manageoffer',
-          page: () => const ios_manageoffer(),
-        ),
-        GetPage(
-          name: '/order',
-          page: () => order(),
-        ),
-        GetPage(
-          name: '/overview_ios',
-          page: () => const overview_ios(),
-        ),
-        GetPage(
-          name: '/Earning_ios',
-          page: () => const Earning_ios(),
-        ),
+            name: '/Profession_details',
+            page: () => const Profession_details()),
+        GetPage(name: '/Business_address', page: () => B_Address()),
+        GetPage(name: '/create_business', page: () => create_business()),
+        GetPage(name: '/upload_store', page: () => const UploadStore()),
+        GetPage(name: '/Manage_offer', page: () => const Manage_offer()),
+        GetPage(name: '/order_dashboard', page: () => order_deshboard()),
+        GetPage(name: '/total_reqeemed', page: () => const total_reqeemed()),
+        GetPage(name: '/support_details', page: () => const support_details()),
+        GetPage(name: '/support', page: () => const support()),
+        GetPage(name: '/notification', page: () => const notification()),
+        GetPage(name: '/Privacy_policy', page: () => const Privacy_Policy()),
+        GetPage(name: '/Term_condition', page: () => const Term_condition()),
+        GetPage(name: '/About_Us', page: () => const About_Us()),
+        GetPage(name: '/successfully', page: () => const successfully()),
+        GetPage(name: '/dashboard', page: () => Dashboard()),
+        GetPage(name: '/Active_offers', page: () => Active_offers()),
+        GetPage(name: '/location', page: () => const location()),
+        GetPage(name: '/overview', page: () => overview()),
+        GetPage(name: '/offer', page: () => OffersPage()),
+        // GetPage(name: '/myQR', page: () => ,)
       ],
     );
   }

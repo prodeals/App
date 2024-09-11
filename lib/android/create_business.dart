@@ -148,7 +148,7 @@ class _create_businessState extends State<create_business> {
                     padding: EdgeInsets.only(left: 240),
                     child: MyButton(
                       onTap: () {
-                        Get.toNamed('/Business_Address');
+                        Get.toNamed('/Business_address');
                       },
                     ),
                   )

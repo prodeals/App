@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class About_Us extends StatefulWidget {
   const About_Us({super.key});
@@ -21,8 +22,7 @@ class _About_UsState extends State<About_Us> {
         centerTitle: true,
         leading: IconButton(
             onPressed: () {
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (_) => upload_store()));
+              Get.back();
             },
             icon: const Icon(Icons.arrow_back)),
         backgroundColor: const Color.fromARGB(255, 214, 170, 38),

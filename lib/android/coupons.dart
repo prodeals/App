@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pro_deals1/widget/separator.dart';
@@ -22,7 +23,11 @@ class _CouponsState extends State<Coupons> {
         title: const Text("MY Coupons"),
         centerTitle: true,
         backgroundColor: Colors.amber,
-        leading: const Icon(Icons.arrow_back),
+        leading: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: const Icon(Icons.arrow_back)),
       ),
       body: Column(
         children: [

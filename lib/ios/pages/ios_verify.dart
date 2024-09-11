@@ -70,8 +70,7 @@ class _ios_verifyState extends State<ios_verify> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          // Navigator.pushReplacement(context,
-                          //     MaterialPageRoute(builder: (_) => ios_images()));
+                          Get.back();
                         },
                         icon: const Icon(
                           Icons.arrow_back,

@@ -6,340 +6,187 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_deals1/utils/colors.dart';
 import 'package:pro_deals1/utils/images.dart';
 
-class intro extends StatelessWidget {
-  const intro({super.key});
+class Intro extends StatefulWidget {
+  const Intro({super.key});
+
+  @override
+  _IntroState createState() => _IntroState();
+}
+
+class _IntroState extends State<Intro> {
+  final PageController _pageController = PageController();
+  int _currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Container(
-        height: height,
-        width: width,
-        child: Column(
-          children: [
-            Container(
-              height: height / 1.7,
-              width: width,
-              padding: const EdgeInsets.all(30),
-              decoration: BoxDecoration(
-                color: AppColor.primary,
-                borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(46),
-                ),
-              ),
-              child: SvgPicture.asset(Intro1),
-            ),
-            const Gap(20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColor.black300,
-                  ),
-                ),
-                const Gap(10),
-                Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColor.primary,
-                  ),
-                ),
-                const Gap(10),
-                Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColor.primary,
-                  ),
-                ),
-              ],
-            ),
-            const Gap(20),
-            Text(
-              'Welcome to Pro Deals',
-              style: GoogleFonts.roboto(
-                fontSize: 20,
-              ),
-            ),
-            const Gap(20),
-            Text(
-              'Unlock exclusive deals and personalized \ndiscounts tailored to your preferences instantly',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.roboto(
-                fontSize: 14,
-              ),
-            ),
-          ],
-        ),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() {
+            _currentPage = index;
+          });
+        },
+        children: [
+          IntroPage(
+            imageAsset: Intro1,
+            backgroundColor: AppColor.primary,
+            pageTitle: 'Welcome to Pro Deals',
+            pageDescription:
+                'Unlock exclusive deals and personalized \ndiscounts tailored to your preferences instantly',
+          ),
+          IntroPage(
+            imageAsset: Intro2,
+            backgroundColor: AppColor.black300,
+            pageTitle: 'Become affiliate marketer',
+            pageDescription:
+                'Affiliate marketing is a performance-based \n online business',
+          ),
+          IntroPage(
+            imageAsset: Intro3,
+            backgroundColor: AppColor.primary,
+            pageTitle: 'End to end encrypted',
+            pageDescription:
+                'Security method that keeps your \ncommunications secure',
+          ),
+        ],
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            Text(
-              'Skip',
-              style: GoogleFonts.roboto(
-                color: AppColor.primary,
-                fontSize: 24,
-              ),
-            ),
-            Spacer(),
-            Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColor.primary,
-              ),
-              alignment: Alignment.center,
-              child: IconButton(
-                onPressed: () {
-                  Get.to(
-                    const intro2(),
-                  );
-                },
-                icon: Icon(
-                  Icons.arrow_forward_sharp,
-                  color: AppColor.white,
-                ),
-              ),
-            )
-          ],
+        child: BottomNav(
+          currentPage: _currentPage,
+          onPageChanged: (index) {
+            _pageController.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+          },
         ),
       ),
     );
   }
 }
 
-class intro2 extends StatelessWidget {
-  const intro2({super.key});
+class IntroPage extends StatelessWidget {
+  final String imageAsset;
+  final Color backgroundColor;
+  final String pageTitle;
+  final String pageDescription;
+
+  const IntroPage({
+    required this.imageAsset,
+    required this.backgroundColor,
+    required this.pageTitle,
+    required this.pageDescription,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: Container(
-        height: height,
-        width: width,
-        child: Column(
-          children: [
-            Container(
-              height: height / 1.7,
-              width: width,
-              padding: const EdgeInsets.all(30),
-              decoration: BoxDecoration(
-                color: AppColor.black300,
-                borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(46),
-                ),
-              ),
-              child: SvgPicture.asset(Intro2),
+
+    return Column(
+      children: [
+        Container(
+          height: height / 1.7,
+          width: width,
+          padding: const EdgeInsets.all(30),
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(46),
             ),
-            const Gap(20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColor.primary,
-                  ),
-                ),
-                const Gap(10),
-                Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColor.black300,
-                  ),
-                ),
-                const Gap(10),
-                Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColor.primary,
-                  ),
-                ),
-              ],
-            ),
-            const Gap(20),
-            Text(
-              'Become affiliate marketer',
-              style: GoogleFonts.roboto(
-                fontSize: 20,
-              ),
-            ),
-            const Gap(20),
-            Text(
-              'Affiliate marketing is a performance-based \n online business',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.roboto(
-                fontSize: 14,
-              ),
-            ),
-          ],
+          ),
+          child: SvgPicture.asset(imageAsset),
         ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            Text(
-              'Skip',
-              style: GoogleFonts.roboto(
-                color: AppColor.primary,
-                fontSize: 24,
-              ),
-            ),
-            Spacer(),
-            Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColor.primary,
-              ),
-              alignment: Alignment.center,
-              child: IconButton(
-                onPressed: () {
-                  Get.to(const intro3());
-                },
-                icon: Icon(
-                  Icons.arrow_forward_sharp,
-                  color: AppColor.white,
-                ),
-              ),
-            )
-          ],
+        const Gap(20),
+        Text(
+          pageTitle,
+          style: GoogleFonts.roboto(
+            fontSize: 20,
+          ),
         ),
-      ),
+        const Gap(20),
+        Text(
+          pageDescription,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.roboto(
+            fontSize: 14,
+          ),
+        ),
+        const Spacer(),
+      ],
     );
   }
 }
 
-class intro3 extends StatelessWidget {
-  const intro3({super.key});
+class BottomNav extends StatelessWidget {
+  final int currentPage;
+  final Function(int) onPageChanged;
+
+  const BottomNav({
+    required this.currentPage,
+    required this.onPageChanged,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: Container(
-        height: height,
-        width: width,
-        child: Column(
-          children: [
-            Container(
-              height: height / 1.7,
-              width: width,
-              padding: const EdgeInsets.all(30),
-              decoration: BoxDecoration(
-                color: AppColor.primary,
-                borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(46),
-                ),
-              ),
-              child: SvgPicture.asset(Intro3),
+    return Row(
+      children: [
+        GestureDetector(
+          onTap: () {
+            Get.offNamedUntil('/login', (route) => false);
+          },
+          child: Text(
+            'Skip',
+            style: GoogleFonts.roboto(
+              color: AppColor.primary,
+              fontSize: 24,
             ),
-            const Gap(20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColor.primary,
-                  ),
-                ),
-                const Gap(10),
-                Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColor.primary,
-                  ),
-                ),
-                const Gap(10),
-                Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColor.black300,
-                  ),
-                ),
-              ],
-            ),
-            const Gap(20),
-            Text(
-              'end to end encrypted',
-              style: GoogleFonts.roboto(
-                fontSize: 20,
-              ),
-            ),
-            const Gap(20),
-            Text(
-              'security method that keeps your \ncommunications secure',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.roboto(
-                fontSize: 14,
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            Text(
-              'Skip',
-              style: GoogleFonts.roboto(
-                color: AppColor.primary,
-                fontSize: 24,
-              ),
-            ),
-            Spacer(),
-            Container(
-              height: 40,
-              width: 40,
+        const Spacer(),
+        Row(
+          children: List.generate(3, (index) {
+            return Container(
+              margin: const EdgeInsets.symmetric(horizontal: 5.0),
+              height: 10,
+              width: 10,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColor.primary,
+                color:
+                    currentPage == index ? AppColor.primary : AppColor.black300,
               ),
-              alignment: Alignment.center,
-              child: IconButton(
-                onPressed: () {
-                  Get.offNamed('/login');
-                },
-                icon: Icon(
-                  Icons.arrow_forward_sharp,
-                  color: AppColor.white,
-                ),
-              ),
-            )
-          ],
+            );
+          }),
         ),
-      ),
+        const Spacer(),
+        Container(
+          height: 40,
+          width: 40,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColor.primary,
+          ),
+          alignment: Alignment.center,
+          child: IconButton(
+            onPressed: () {
+              if (currentPage < 2) {
+                onPageChanged(currentPage + 1);
+              } else {
+                Get.offNamed('/login');
+              }
+            },
+            icon: Icon(
+              Icons.arrow_forward_sharp,
+              color: AppColor.white,
+            ),
+          ),
+        )
+      ],
     );
   }
 }

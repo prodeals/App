@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/images.dart';
+import '../api/register.dart';
 
 class register extends StatelessWidget {
   register({super.key});
@@ -170,22 +171,29 @@ class register extends StatelessWidget {
                       onTap: () async {
                         var key = formKey.currentState;
                         if (key!.validate() == true) {
-                          await FirebaseAuth.instance.verifyPhoneNumber(
-                            verificationCompleted:
-                                (PhoneAuthCredential credential) {},
-                            verificationFailed: (FirebaseAuthException ex) {},
-                            codeSent: (String code, int? resendCode) {
-                              Get.toNamed('/otp_verification', arguments: {
-                                'code': code,
-                                'username': user.text.toString(),
-                                'phone': phone.text.toString(),
-                                'password': password.text.toString(),
-                              });
-                            },
-                            codeAutoRetrievalTimeout: (verificationId) {},
-                            phoneNumber: '+91 ${phone.text.toString()}',
-                          );
-                          print('valid');
+                          // await FirebaseAuth.instance.verifyPhoneNumber(
+                          //   verificationCompleted:
+                          //       (PhoneAuthCredential credential) {},
+                          //   verificationFailed: (FirebaseAuthException ex) {},
+                          //   codeSent: (String code, int? resendCode) {
+                          //     Get.toNamed('/otp_verification', arguments: {
+                          //       'code': code,
+                          //       'username': user.text.toString(),
+                          //       'phone': phone.text.toString(),
+                          //       'password': password.text.toString(),
+                          //     });
+                          //   },
+                          //   codeAutoRetrievalTimeout: (verificationId) {},
+                          //   phoneNumber: '+91 ${phone.text.toString()}',
+                          // );
+                          await registerUser(
+                            userName: user.text.toString(),
+                            email: 'kenilkenil425@gmail.com',
+                            phone: phone.text.toString(),
+                            password: password.text.toString(),
+                          ).then((value) {
+                            print('valid');
+                          });
                         }
                       },
                       child: Padding(

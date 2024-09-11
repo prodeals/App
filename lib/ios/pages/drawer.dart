@@ -6,8 +6,8 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-import '../../android/bar chart .dart';
-import '../../android/roundbarchar.dart';
+import '../../android/barchart.dart';
+import '../../android/round_bar_chart.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -715,7 +715,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ],
                       ),
-                      const barchart()
+                      const BarChartWidget(),
                     ],
                   )),
             ),

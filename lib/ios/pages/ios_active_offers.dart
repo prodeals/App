@@ -2,399 +2,160 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/colors.dart';
+import '../../widget/cupertino_my_drawer.dart';
+import '../../widget/ios/offerCard.dart';
 
-class ios_active extends StatefulWidget {
-  const ios_active({super.key});
+class IosActive extends StatefulWidget {
+  const IosActive({super.key});
 
   @override
-  State<ios_active> createState() => _ios_activeState();
+  State<IosActive> createState() => _IosActiveState();
 }
 
-class _ios_activeState extends State<ios_active> {
+class _IosActiveState extends State<IosActive> {
   @override
   Widget build(BuildContext context) {
-    double hit = MediaQuery.of(context).size.height;
-    double wid = MediaQuery.of(context).size.width;
-    return CupertinoPageScaffold(
-      child: Container(
-        height: hit,
-        width: wid,
-        color: AppColor.white,
-        child: SafeArea(
-            child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CupertinoFormRow(
-                padding: const EdgeInsets.symmetric(horizontal: 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CupertinoButton(
-                        onPressed: () {
-                          // Handle accept button tap
-                        },
-                        child: Icon(
-                          CupertinoIcons.bars,
-                          size: 30,
-                          color: CupertinoColors.black,
-                        )),
-                    Image.asset(
-                      'assets/images/Rectangle 5021 (1).png',
-                      width: 80,
-                      height: 80,
-                    ),
-                  ],
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          Image.asset(
+            'assets/images/profile_image.png',
+            width: 60,
+            height: 60,
+          ),
+          const Gap(20),
+        ],
+      ),
+      drawer: C_drawer(height, width),
+      body: CupertinoPageScaffold(
+        child: Container(
+          height: height,
+          width: width,
+          color: AppColor.white,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Gap(20),
+                Text(
+                  "ACTIVE OFFERS",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.black300,
+                  ),
                 ),
-              ),
-              const Gap(20),
-              const Text(
-                "ACTIVE OFFERS",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const Gap(20),
-              CupertinoFormRow(
-                child: Row(
-                  children: [
-                    Image.asset("assets/images/image 55.png"),
-                    const Gap(10),
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "LA Pino'z Pizza",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.normal),
-                        ),
-                        Gap(4),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.location_on,
-                              color: Colors.grey,
-                              size: 14,
+                const Gap(20),
+                CupertinoFormRow(
+                  child: Row(
+                    children: [
+                      Image.asset("assets/images/profile_image.png"),
+                      const Gap(10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "LA Pino'z Pizza",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.normal,
+                              color: AppColor.black300,
                             ),
-                            Text(
-                              "Varachha",
-                              style: TextStyle(
+                          ),
+                          const Gap(4),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.location_on,
+                                color: Colors.grey,
+                                size: 14,
+                              ),
+                              Text(
+                                "Varachha",
+                                style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 12,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                          ],
-                        ),
-                        Gap(4),
-                        Row(
-                          children: [
-                            Text(
-                              "4.9",
-                              style: TextStyle(fontSize: 14),
-                            ),
-                            Gap(5),
-                            Icon(
-                              Icons.star,
-                              color: Color.fromARGB(255, 214, 170, 38),
-                              size: 16,
-                            ),
-                            Icon(
-                              Icons.star,
-                              color: Color.fromARGB(255, 214, 170, 38),
-                              size: 16,
-                            ),
-                            Icon(
-                              Icons.star,
-                              color: Color.fromARGB(255, 214, 170, 38),
-                              size: 16,
-                            ),
-                            Icon(
-                              Icons.star,
-                              color: Color.fromARGB(255, 214, 170, 38),
-                              size: 16,
-                            ),
-                            Icon(
-                              Icons.star_half,
-                              color: Color.fromARGB(255, 214, 170, 38),
-                              size: 16,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    const Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: Image.asset(
-                        "assets/images/Group 3765.png",
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Gap(10),
-              Card(
-                elevation: 1,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                color: const Color.fromARGB(255, 255, 255, 255),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "Just Arrived",
-                            style: TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.w600),
-                          ),
-                          Container(
-                            height: 18,
-                            width: 36,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: const Color.fromARGB(255, 214, 170, 38),
+                                  fontWeight: FontWeight.normal,
+                                ),
                               ),
-                              borderRadius: BorderRadius.circular(3),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                "25% off",
-                                style: TextStyle(
-                                    fontSize: 8,
-                                    color: Color.fromARGB(2255, 214, 170, 38)),
-                              ),
-                            ),
+                            ],
                           ),
-                        ],
-                      ),
-                      const Gap(8),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Get Any Choco Lava at Rs.99\nworth Rs.121",
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                          Column(
+                          const Gap(4),
+                          Row(
                             children: [
                               Text(
-                                "₹ 99/-",
+                                "4.9",
                                 style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
+                                    fontSize: 14, color: AppColor.black300),
                               ),
-                              Text(
-                                "₹ 121/-",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    decoration: TextDecoration.lineThrough,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey),
-                              )
+                              const Gap(5),
+                              ...List.generate(
+                                4,
+                                (index) => const Icon(
+                                  Icons.star,
+                                  color: Color.fromARGB(255, 214, 170, 38),
+                                  size: 16,
+                                ),
+                              ),
+                              const Icon(
+                                Icons.star_half,
+                                color: Color.fromARGB(255, 214, 170, 38),
+                                size: 16,
+                              ),
                             ],
-                          )
+                          ),
                         ],
                       ),
-                      const Gap(10),
-                      const Text(
-                        "Valid on : All Days",
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w600),
+                      const Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child:
+                            SvgPicture.asset('assets/images/svg/Group3766.svg'),
                       ),
-                      const Text(
-                        "Timings : Sat, 11:00 AM-11:30 PM",
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w600),
-                      )
                     ],
                   ),
                 ),
-              ),
-              const Gap(10),
-              Card(
-                elevation: 1,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                const Gap(10),
+                buildOfferCard(
+                  title: "Just Arrived",
+                  offer: "25% off",
+                  description: "Get Any Choco Lava at Rs.99\nworth Rs.121",
+                  discountPrice: "₹ 99/-",
+                  originalPrice: "₹ 121/-",
+                  validity: "All Days",
+                  timings: "Sat, 11:00 AM-11:30 PM",
                 ),
-                color: const Color.fromARGB(255, 255, 255, 255),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "Just Arrived",
-                            style: TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.w600),
-                          ),
-                          Container(
-                            height: 18,
-                            width: 36,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: const Color.fromARGB(255, 214, 170, 38),
-                              ),
-                              borderRadius: BorderRadius.circular(3),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                "25% off",
-                                style: TextStyle(
-                                    fontSize: 8,
-                                    color: Color.fromARGB(2255, 214, 170, 38)),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Gap(8),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Get Any Choco Lava at Rs.99\nworth Rs.121",
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                "₹ 99/-",
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                "₹ 121/-",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    decoration: TextDecoration.lineThrough,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                      const Gap(10),
-                      const Text(
-                        "Valid on : All Days",
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w600),
-                      ),
-                      const Text(
-                        "Timings : Sat, 11:00 AM-11:30 PM",
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w600),
-                      )
-                    ],
-                  ),
+                const Gap(10),
+                buildOfferCard(
+                  title: "Just Arrived",
+                  offer: "25% off",
+                  description: "Get Any Choco Lava at Rs.99\nworth Rs.121",
+                  discountPrice: "₹ 99/-",
+                  originalPrice: "₹ 121/-",
+                  validity: "All Days",
+                  timings: "Sat, 11:00 AM-11:30 PM",
                 ),
-              ),
-              const Gap(10),
-              Card(
-                elevation: 1,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                const Gap(10),
+                buildOfferCard2(
+                  title: "Special Offer",
+                  offer: "SAVE",
+                  description: "Get 50% off on your next purchase!",
+                  discountPrice: "\$25.00",
+                  originalPrice: "\$50.00",
+                  validity: "Until Dec 31, 2024",
+                  timings: "9 AM - 9 PM",
+                  discountPercentage: "50",
                 ),
-                color: const Color.fromARGB(255, 255, 255, 255),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "Just Arrived",
-                            style: TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.w600),
-                          ),
-                          Container(
-                            height: 18,
-                            width: 36,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: const Color.fromARGB(255, 214, 170, 38),
-                              ),
-                              borderRadius: BorderRadius.circular(3),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                "25% off",
-                                style: TextStyle(
-                                    fontSize: 8,
-                                    color: Color.fromARGB(2255, 214, 170, 38)),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Gap(8),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Get Any Choco Lava at Rs.99\nworth Rs.121",
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                "₹ 99/-",
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                "₹ 121/-",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    decoration: TextDecoration.lineThrough,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                      const Gap(10),
-                      const Text(
-                        "Valid on : All Days",
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w600),
-                      ),
-                      const Text(
-                        "Timings : Sat, 11:00 AM-11:30 PM",
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w600),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        )),
+        ),
       ),
     );
   }

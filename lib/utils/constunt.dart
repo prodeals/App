@@ -84,3 +84,12 @@ List orders = [
     'quantity': 1
   },
 ];
+
+String id = "";
+String UserName = "";
+String Email = "";
+String Phone = "";
+bool isBusiness = false;
+var ImageB = "";
+
+String host = "https://prodeal.onrender.com/";

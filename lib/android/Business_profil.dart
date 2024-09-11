@@ -46,7 +46,7 @@ class _Profession_ProfileState extends State<Profession_Profile> {
         centerTitle: true,
         leading: IconButton(
             onPressed: () {
-              Get.toNamed('/Profession_details');
+              Get.back();
             },
             icon: const Icon(Icons.arrow_back)),
         backgroundColor: const Color.fromARGB(255, 214, 170, 38),

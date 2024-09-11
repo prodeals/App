@@ -3,32 +3,48 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_deals1/utils/colors.dart';
-
 import '../widget/floating_searchbar.dart';
 
-class search extends StatelessWidget {
-  const search({super.key});
+class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
+
+  @override
+  _SearchPageState createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> {
+  String selectedCategory = '';
 
   @override
   Widget build(BuildContext context) {
-    double hit = MediaQuery.of(context).size.height;
-    double wid = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.primary,
-        title: const Text('Search'),
+        title: Text(
+          'Search',
+          style: GoogleFonts.openSans(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
         centerTitle: true,
         actions: [
           IconButton(
-              onPressed: () {
-                Get.toNamed('/filter');
-              },
-              icon: const Icon(Icons.filter_alt_outlined))
+            onPressed: () {
+              Get.toNamed('/Filter');
+            },
+            icon: Icon(
+              Icons.filter_alt_outlined,
+              size: 28,
+            ),
+          ),
         ],
       ),
       body: Container(
-        height: hit,
-        width: wid,
+        width: width,
         padding: const EdgeInsets.all(16),
         child: Stack(
           fit: StackFit.expand,
@@ -41,33 +57,23 @@ class search extends StatelessWidget {
                   'All Categories',
                   style: GoogleFonts.openSans(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: 22,
+                    color: AppColor.black300,
                   ),
                 ),
                 const Gap(20),
-                const Wrap(
-                  spacing: 20,
-                  runSpacing: 10,
-                  children: [
-                    Chip(
-                      label: Text('North indian'),
-                      // autofocus: true,
-                      // deleteIcon: IconButton(
-                      //     onPressed: () {}, icon: const Icon(Icons.close)),
-                    ),
-                    Chip(
-                      label: Text('Pizza'),
-                    ),
-                    Chip(
-                      label: Text('shake'),
-                    ),
-                    Chip(
-                      label: Text('Desserts'),
-                    ),
-                    Chip(
-                      label: Text('Chocolate'),
-                    ),
-                  ],
+                Expanded(
+                  child: Wrap(
+                    spacing: 16,
+                    runSpacing: 12,
+                    children: [
+                      _buildCategoryChip('North Indian', Icons.local_dining),
+                      _buildCategoryChip('Pizza', Icons.local_pizza),
+                      _buildCategoryChip('Shake', Icons.local_cafe),
+                      _buildCategoryChip('Desserts', Icons.cake),
+                      _buildCategoryChip('Chocolate', Icons.ac_unit),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -75,6 +81,40 @@ class search extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildCategoryChip(String label, IconData icon) {
+    bool isSelected = selectedCategory == label;
+
+    return ChoiceChip(
+      label: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 20, color: isSelected ? Colors.white : Colors.black),
+          const Gap(4),
+          Text(
+            label,
+            style: GoogleFonts.openSans(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: isSelected ? Colors.white : Colors.black,
+            ),
+          ),
+        ],
+      ),
+      selected: isSelected,
+      backgroundColor: Colors.grey.shade200,
+      selectedColor: AppColor.primary,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      onSelected: (bool selected) {
+        setState(() {
+          selectedCategory = selected ? label : '';
+        });
+      },
     );
   }
 }

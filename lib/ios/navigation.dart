@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pro_deals1/utils/colors.dart';
 
 import 'favourite_page.dart';
-import 'food_details.dart';
 import 'ios_home_page.dart';
 import 'ios_profile.dart';
 import 'ios_qr.dart';
@@ -51,7 +50,7 @@ class ios_navigation extends StatelessWidget {
             return const ios_qr();
             break;
           case 3:
-            return const favourite();
+            return const iosFavourite();
             break;
           default:
             return const ios_profile();

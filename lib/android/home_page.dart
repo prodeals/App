@@ -688,7 +688,7 @@ class home_page extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        Get.toNamed('/details');
+                        Get.toNamed('/detailPage');
                       },
                       child: Container(
                         height: 230,

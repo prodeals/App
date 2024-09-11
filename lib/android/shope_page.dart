@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_deals1/utils/colors.dart';
+
+import '../widget/offer_card.dart';
 
 class shope_page extends StatefulWidget {
   const shope_page({super.key});
@@ -44,162 +42,181 @@ class _shope_pageState extends State<shope_page>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              flex: 3,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: hit / 2.3,
-                      width: wid,
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: hit / 3,
-                            width: wid,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage('assets/images/CC.png'),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            right: 16,
-                            child: Container(
-                              height: hit / 4,
-                              width: wid - 32,
-                              decoration: BoxDecoration(
-                                color: AppColor.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    color: AppColor.gray.withOpacity(0.5),
-                                    offset: const Offset(1, 1),
-                                  ),
-                                ],
-                              ),
-                              padding: const EdgeInsets.all(6),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+            AnimatedSwitcher(
+              duration: Duration(milliseconds: 300),
+              child: (tabController.index == 0)
+                  ? Expanded(
+                      key: ValueKey<int>(0),
+                      flex: 6,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: hit / 2.3,
+                              width: wid,
+                              child: Stack(
                                 children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Cofee Culture',
-                                        style: GoogleFonts.openSans(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                        ),
+                                  Container(
+                                    height: hit / 3,
+                                    width: wid,
+                                    decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                        image:
+                                            AssetImage('assets/images/CC.png'),
+                                        fit: BoxFit.fill,
                                       ),
-                                      const Text('- Range ₹200 - ₹400'),
-                                    ],
-                                  ),
-                                  Text(
-                                    'The Ristorante Lounge',
-                                    style: GoogleFonts.openSans(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16,
                                     ),
                                   ),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        height: 30,
-                                        width: 100,
-                                        decoration: BoxDecoration(
-                                          color: Colors.green,
-                                          borderRadius:
-                                              BorderRadius.circular(4),
-                                        ),
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          'Open Now',
-                                          style: GoogleFonts.openSans(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 16,
-                                            color: AppColor.white,
+                                  Positioned(
+                                    bottom: 0,
+                                    right: 16,
+                                    child: AnimatedContainer(
+                                      duration: Duration(milliseconds: 300),
+                                      height: hit / 4,
+                                      width: wid - 32,
+                                      decoration: BoxDecoration(
+                                        color: AppColor.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 3,
+                                            color:
+                                                AppColor.gray.withOpacity(0.5),
+                                            offset: const Offset(1, 1),
                                           ),
-                                        ),
+                                        ],
                                       ),
-                                      const Gap(4),
-                                      Text(
-                                        '10:00 AM -11:00 PM',
-                                        style: GoogleFonts.openSans(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 16,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  const Row(
-                                    children: [
-                                      Icon(Icons.location_on),
-                                      Gap(4),
-                                      Text('Khodiyar Nivas, Vesu, Surat'),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.wifi_calling_3_sharp,
-                                        color: AppColor.primary,
+                                      padding: const EdgeInsets.all(6),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'Cofee Culture',
+                                                style: GoogleFonts.openSans(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20,
+                                                ),
+                                              ),
+                                              const Text('- Range ₹200 - ₹400'),
+                                            ],
+                                          ),
+                                          Text(
+                                            'The Ristorante Lounge',
+                                            style: GoogleFonts.openSans(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                height: 30,
+                                                width: 100,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.green,
+                                                  borderRadius:
+                                                      BorderRadius.circular(4),
+                                                ),
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  'Open Now',
+                                                  style: GoogleFonts.openSans(
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 16,
+                                                    color: AppColor.white,
+                                                  ),
+                                                ),
+                                              ),
+                                              const Gap(4),
+                                              Text(
+                                                '10:00 AM -11:00 PM',
+                                                style: GoogleFonts.openSans(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 16,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              Get.toNamed('/location');
+                                            },
+                                            child: const Row(
+                                              children: [
+                                                Icon(Icons.location_on),
+                                                Gap(4),
+                                                Text(
+                                                    'Khodiyar Nivas, Vesu, Surat'),
+                                              ],
+                                            ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.wifi_calling_3_sharp,
+                                                color: AppColor.primary,
+                                              ),
+                                              const Gap(4),
+                                              const Text('+91 223 234 6789'),
+                                            ],
+                                          ),
+                                        ],
                                       ),
-                                      const Gap(4),
-                                      const Text('+91 223 234 6789'),
-                                    ],
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
+                    )
+                  : SizedBox(
+                      key: ValueKey<int>(1),
                     ),
-                    const Gap(10),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: TabBar(
-                        onTap: (value) {
-                          page.jumpToPage(value);
-                        },
-                        controller: tabController,
-                        labelColor: AppColor.primary,
-                        dividerColor: Colors.transparent,
-                        indicatorColor: AppColor.primary,
-                        tabs: [
-                          Tab(
-                            text: 'About',
-                          ),
-                          Tab(
-                            text: 'Menu',
-                          ),
-                          Tab(
-                            text: 'Offers',
-                          ),
-                          Tab(
-                            text: 'Gallary',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+            ),
+            Expanded(
+              flex: 1,
+              child: TabBar(
+                onTap: (value) {
+                  page.jumpToPage(value);
+                },
+                controller: tabController,
+                labelColor: AppColor.primary,
+                dividerColor: Colors.transparent,
+                indicatorColor: AppColor.primary,
+                tabs: [
+                  Tab(
+                    text: 'About',
+                  ),
+                  Tab(
+                    text: 'Offers',
+                  ),
+                  Tab(
+                    text: 'Gallery',
+                  ),
+                  Tab(
+                    text: 'Menu',
+                  ),
+                ],
               ),
             ),
-            const Gap(10),
+            Gap(6),
             Expanded(
-              flex: 2,
+              flex: (tabController.index == 0) ? 5 : 14,
               child: PageView(
                 controller: page,
                 onPageChanged: (value) {
-                  tabController.index = value;
+                  setState(() {
+                    tabController.index = value;
+                  });
                 },
                 children: [
                   SingleChildScrollView(
@@ -228,9 +245,7 @@ class _shope_pageState extends State<shope_page>
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Text(
                             'Cafe, Mexican, Fusion',
-                            style: GoogleFonts.openSans(
-                                // color: AppColor.primary,
-                                ),
+                            style: GoogleFonts.openSans(),
                           ),
                         ),
                         const Gap(10),
@@ -248,16 +263,14 @@ class _shope_pageState extends State<shope_page>
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Text(
                             'Vegetarian',
-                            style: GoogleFonts.openSans(
-                                // color: AppColor.primary,
-                                ),
+                            style: GoogleFonts.openSans(),
                           ),
                         ),
                         const Gap(10),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Text(
-                            'Best Selling Iteams :',
+                            'Best Selling Items :',
                             style: GoogleFonts.openSans(
                               color: AppColor.primary,
                             ),
@@ -268,9 +281,7 @@ class _shope_pageState extends State<shope_page>
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Text(
                             'coffees, unique mocktails, pizzas',
-                            style: GoogleFonts.openSans(
-                                // color: AppColor.primary,
-                                ),
+                            style: GoogleFonts.openSans(),
                           ),
                         ),
                         const Gap(10),
@@ -342,6 +353,45 @@ class _shope_pageState extends State<shope_page>
                       crossAxisAlignment: CrossAxisAlignment.start,
                     ),
                   ),
+                  SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        OfferCard(
+                          offerText: "Get Flat 20% Off on any order",
+                          validityText: "Valid on: All days",
+                          expirationDate: "December 31, 2024",
+                          offerCode: "SAVE10",
+                        ),
+                        OfferCard2(
+                          offerText: "Get ₹200 items in ₹170",
+                          validityText: "Valid on: All days",
+                          expirationDate: "December 31, 2024",
+                          offerCode: "SAVE20",
+                          price: '170',
+                        ),
+                        OfferCard2(
+                          offerText: "Get ₹300 items in ₹250",
+                          validityText: "Valid on: All days",
+                          expirationDate: "December 31, 2024",
+                          offerCode: "SAVE30",
+                          price: '250',
+                        ),
+                        OfferCard(
+                          offerText: "Get Flat 10% Off on any order",
+                          validityText: "Valid on: All days",
+                          expirationDate: "December 31, 2024",
+                          offerCode: "SAVE40",
+                        ),
+                        OfferCard2(
+                          offerText: "Get ₹230 items in ₹200",
+                          validityText: "Valid on: All days",
+                          expirationDate: "December 31, 2024",
+                          offerCode: "SAVE50",
+                          price: '200',
+                        ),
+                      ],
+                    ),
+                  ),
                   MasonryGridView(
                     shrinkWrap: true,
                     gridDelegate:
@@ -352,156 +402,106 @@ class _shope_pageState extends State<shope_page>
                     crossAxisSpacing: 10,
                     children: [
                       Container(
-                        height: 230,
-                        padding: const EdgeInsets.all(10),
+                        height: 200,
+                        width: 200,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColor.white,
-                          boxShadow: [
-                            // BoxShadow(
-                            //   color: AppColor.gray,
-                            //   blurRadius: 2,
-                            //   offset: const Offset(1, 1),
-                            // ),
-                          ],
-                        ),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                'assets/images/menu1.png',
-                              ),
-                              fit: BoxFit.fill,
-                            ),
+                          borderRadius: BorderRadius.circular(16),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/cc1.png'),
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Container(
-                        height: 230,
-                        padding: const EdgeInsets.all(10),
+                        height: 200,
+                        width: 200,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColor.white,
-                          boxShadow: [
-                            // BoxShadow(
-                            //   color: AppColor.gray,
-                            //   blurRadius: 2,
-                            //   offset: const Offset(1, 1),
-                            // ),
-                          ],
-                        ),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                'assets/images/menu2.png',
-                              ),
-                              fit: BoxFit.fill,
-                            ),
+                          borderRadius: BorderRadius.circular(16),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/cc2.png'),
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Container(
-                        height: 230,
-                        padding: const EdgeInsets.all(10),
+                        height: 200,
+                        width: 200,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColor.white,
-                          boxShadow: [
-                            // BoxShadow(
-                            //   color: AppColor.gray,
-                            //   blurRadius: 2,
-                            //   offset: const Offset(1, 1),
-                            // ),
-                          ],
+                          borderRadius: BorderRadius.circular(16),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/cc3.png'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                'assets/images/menu3.png',
-                              ),
-                              fit: BoxFit.fill,
-                            ),
+                      ),
+                      Container(
+                        height: 200,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/cc4.png'),
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  SingleChildScrollView(
-                    child: Container(
-                      height: 300,
-                      width: wid,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ListTile(
-                            dense: true,
-                            leading: Container(
-                              height: 80,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/cc2.png'),
-                                ),
-                              ),
-                            ),
-                            title: Text('Coffee Culture'),
-                            subtitle: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.location_on,
-                                      size: 14,
-                                    ),
-                                    const Gap(6),
-                                    Text(
-                                      'Vesu',
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      '4.5',
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                    const Gap(4),
-                                    RatingBar.builder(
-                                      initialRating: 4.3,
-                                      minRating: 0.5,
-                                      direction: Axis.horizontal,
-                                      allowHalfRating: true,
-                                      itemCount: 5,
-                                      itemPadding: const EdgeInsets.symmetric(
-                                          horizontal: 1.0),
-                                      itemBuilder: (context, _) => Icon(
-                                          Icons.star,
-                                          color: AppColor.primary),
-                                      onRatingUpdate: (rating) {},
-                                      itemSize: 18,
-                                    ),
-                                    const Gap(4),
-                                    Text(
-                                      '(205 Reviews)',
-                                      style: TextStyle(fontSize: 10),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Text(
-                            'Rs.250 Off On A Minimum\nBilling Of Rs.1000',
-                            textAlign: TextAlign.start,
-                          ),
-                        ],
-                      ),
+                  MasonryGridView(
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
                     ),
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    children: [
+                      Container(
+                        height: 200,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/menu1.png'),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 200,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/menu2.png'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 200,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/menu3.png'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 200,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/cc2.png'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  Container(),
                 ],
               ),
             ),

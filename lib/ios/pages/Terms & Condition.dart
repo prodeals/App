@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/colors.dart';
@@ -34,7 +35,9 @@ class _term_conditiomState extends State<term_conditiom> {
                     // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Get.back();
+                        },
                         child: Container(
                           height: 30,
                           width: 30,
@@ -55,7 +58,7 @@ class _term_conditiomState extends State<term_conditiom> {
                           ),
                         ),
                       ),
-                      Gap(wid / 4),
+                      Gap(wid / 6),
                       Text(
                         'Terms & Condition',
                         style: GoogleFonts.openSans(
@@ -68,9 +71,12 @@ class _term_conditiomState extends State<term_conditiom> {
                   ),
                 ),
                 const Gap(20),
-                const Text(
+                Text(
                   "General site usage last revlsed \nDecember 12-01-2020",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.black300),
                 ),
                 const Gap(20),
                 const Text(
@@ -81,9 +87,12 @@ class _term_conditiomState extends State<term_conditiom> {
                       color: Colors.grey),
                 ),
                 const Gap(10),
-                const Text(
+                Text(
                   "1. Agreement",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.black300),
                 ),
                 const Gap(10),
                 const Text(
@@ -94,9 +103,12 @@ class _term_conditiomState extends State<term_conditiom> {
                       color: Colors.grey),
                 ),
                 const Gap(10),
-                const Text(
-                  "1. Account",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                Text(
+                  "2. Account",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.black300),
                 ),
                 const Gap(10),
                 const Text(
@@ -107,9 +119,12 @@ class _term_conditiomState extends State<term_conditiom> {
                       color: Colors.grey),
                 ),
                 const Gap(10),
-                const Text(
-                  "1. RelationShip With Groceries",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                Text(
+                  "3. RelationShip With Groceries",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.black300),
                 ),
                 const Gap(10),
                 const Text(

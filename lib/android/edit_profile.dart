@@ -1,22 +1,66 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pro_deals1/utils/colors.dart';
+import 'package:pro_deals1/utils/constunt.dart';
 
-class edit_profile extends StatefulWidget {
-  const edit_profile({super.key});
+class EditProfile extends StatefulWidget {
+  const EditProfile({super.key});
 
   @override
-  State<edit_profile> createState() => _edit_profileState();
+  State<EditProfile> createState() => _EditProfileState();
 }
 
-class _edit_profileState extends State<edit_profile> {
+class _EditProfileState extends State<EditProfile> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+
+  XFile? _imageFile;
+  final ImagePicker _picker = ImagePicker();
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize controllers with user data
+    nameController.text = UserName; // Replace with actual user data
+    emailController.text = Email; // Replace with actual user data
+    phoneController.text = Phone; // Replace with actual user data
+    addressController.text =
+        '123 Street, City'; // Replace with actual user data
+  }
+
+  Future<void> _pickImage() async {
+    final XFile? pickedFile =
+        await _picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _imageFile = pickedFile;
+    });
+  }
+
+  void _saveProfile() {
+    // Implement saving profile information
+    // For example, send data to backend API
+    final name = nameController.text;
+    final email = emailController.text;
+    final phone = phoneController.text;
+    final address = addressController.text;
+
+    // Simulate saving data
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Profile updated successfully')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double hit = MediaQuery.of(context).size.height;
     double wid = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
@@ -38,6 +82,12 @@ class _edit_profileState extends State<edit_profile> {
                     Center(
                       child: CircleAvatar(
                         radius: 70,
+                        backgroundImage: _imageFile != null
+                            ? FileImage(File(_imageFile!.path))
+                            : null,
+                        child: _imageFile == null
+                            ? Icon(Icons.person, size: 70)
+                            : null,
                       ),
                     ),
                     Positioned(
@@ -50,7 +100,7 @@ class _edit_profileState extends State<edit_profile> {
                           shape: BoxShape.circle,
                         ),
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: _pickImage,
                           icon: Icon(
                             Icons.edit,
                             color: AppColor.white,
@@ -69,7 +119,7 @@ class _edit_profileState extends State<edit_profile> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'John Lawis',
+                  'John Lawis', // Should be dynamically set based on user data
                   style: GoogleFonts.openSans(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -78,6 +128,7 @@ class _edit_profileState extends State<edit_profile> {
               ),
               const Gap(30),
               TextFormField(
+                controller: nameController,
                 decoration: InputDecoration(
                   labelText: 'Name',
                   hintText: 'Enter your Name',
@@ -93,10 +144,10 @@ class _edit_profileState extends State<edit_profile> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-                keyboardType: TextInputType.emailAddress,
               ),
               const Gap(20),
               TextFormField(
+                controller: phoneController,
                 decoration: InputDecoration(
                   labelText: 'Phone Number',
                   hintText: 'Enter your Phone Number',
@@ -112,10 +163,11 @@ class _edit_profileState extends State<edit_profile> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.phone,
               ),
               const Gap(20),
               TextFormField(
+                controller: emailController,
                 decoration: InputDecoration(
                   labelText: 'Email Address',
                   hintText: 'Enter your Email',
@@ -135,6 +187,7 @@ class _edit_profileState extends State<edit_profile> {
               ),
               const Gap(20),
               TextFormField(
+                controller: addressController,
                 decoration: InputDecoration(
                   labelText: 'Address',
                   hintText: 'Enter your Address',
@@ -150,7 +203,20 @@ class _edit_profileState extends State<edit_profile> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-                keyboardType: TextInputType.emailAddress,
+              ),
+              const Gap(40),
+              Align(
+                alignment: Alignment.center,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColor.primary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  onPressed: _saveProfile,
+                  child: Text('Save'),
+                ),
               ),
             ],
           ),

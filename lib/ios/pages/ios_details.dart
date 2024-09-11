@@ -60,12 +60,7 @@ class _ios_detailState extends State<ios_detail> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          // Navigator.pushReplacement(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (_) => ios_address(),
-                          //   ),
-                          // );
+                          Get.back();
                         },
                         icon: const Icon(
                           Icons.arrow_back,

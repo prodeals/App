@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:pro_deals1/utils/colors.dart';
 
 class Privacy_Policy extends StatefulWidget {
   const Privacy_Policy({super.key});
@@ -20,13 +22,7 @@ class _Privacy_PolicyState extends State<Privacy_Policy> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        leading: IconButton(
-            onPressed: () {
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (_) => upload_store()));
-            },
-            icon: const Icon(Icons.arrow_back)),
-        backgroundColor: const Color.fromARGB(255, 214, 170, 38),
+        backgroundColor: AppColor.primary,
       ),
       body: SingleChildScrollView(
         child: Padding(

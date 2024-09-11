@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../utils/colors.dart';
@@ -19,7 +20,9 @@ class QRcode extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColor.primary,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.back();
+          },
           icon: const Icon(Icons.arrow_back),
         ),
         centerTitle: true,
@@ -37,7 +40,7 @@ class QRcode extends StatelessWidget {
             height: 100,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/Group 3622.png'))),
+                    image: AssetImage('assets/images/profile_image.png'))),
           ),
           const Gap(8),
           const Center(

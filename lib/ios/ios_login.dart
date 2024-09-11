@@ -1,15 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_deals1/utils/colors.dart';
+
+import '../api/login.dart';
 
 class ios_login extends StatelessWidget {
   ios_login({super.key});
@@ -181,23 +178,26 @@ class ios_login extends StatelessWidget {
                           onTap: () async {
                             var key = formkey.currentState!;
                             if (key.validate()) {
-                              await FirebaseAuth.instance.verifyPhoneNumber(
-                                phoneNumber: '+91${number.text.toString()}',
-                                verificationCompleted:
-                                    (PhoneAuthCredential credential) async {
-                                      await FirebaseAuth.instance.signInWithCredential(credential);
-                                    },
-                                verificationFailed:
-                                    (FirebaseAuthException e) {
-                                      if (e.code == 'invalid-phone-number') {
-                                        print('The provided phone number is not valid.');
-                                      }
-                                    },
-                                codeSent: (String verificationId,
-                                    int? resendToken) {},
-                                codeAutoRetrievalTimeout:
-                                    (String verificationId) {},
-                              );
+                              // await FirebaseAuth.instance.verifyPhoneNumber(
+                              //   phoneNumber: '+91${number.text.toString()}',
+                              //   verificationCompleted:
+                              //       (PhoneAuthCredential credential) async {
+                              //         await FirebaseAuth.instance.signInWithCredential(credential);
+                              //       },
+                              //   verificationFailed:
+                              //       (FirebaseAuthException e) {
+                              //         if (e.code == 'invalid-phone-number') {
+                              //           print('The provided phone number is not valid.');
+                              //         }
+                              //       },
+                              //   codeSent: (String verificationId,
+                              //       int? resendToken) {},
+                              //   codeAutoRetrievalTimeout:
+                              //       (String verificationId) {},
+                              // );
+                              loginUser(
+                                  email: 'kenilkenil425@gmail.com',
+                                  password: number.text.toString());
                             }
                           },
                           child: Container(
@@ -256,14 +256,19 @@ class ios_login extends StatelessWidget {
                         ),
                       ),
                       const Gap(30),
-                      Container(
-                        height: 50,
-                        width: 120,
-                        alignment: Alignment.center,
-                        child: Icon(
-                          Icons.apple,
-                          color: AppColor.black300,
-                          size: 50,
+                      GestureDetector(
+                        onTap: () {
+                          Get.offNamedUntil('/navigation', (route) => false);
+                        },
+                        child: Container(
+                          height: 50,
+                          width: 120,
+                          alignment: Alignment.center,
+                          child: Icon(
+                            Icons.apple,
+                            color: AppColor.black300,
+                            size: 50,
+                          ),
                         ),
                       ),
                       const Gap(50),

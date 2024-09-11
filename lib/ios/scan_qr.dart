@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
@@ -12,130 +10,167 @@ class ios_scan_qr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isCodeScanned = false;
-    double hit = MediaQuery.of(context).size.height;
-    double wid = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return CupertinoPageScaffold(
       backgroundColor: const Color(0xfff9f9f9),
-      child: Container(
-        height: hit,
-        width: wid,
-        padding: const EdgeInsets.all(16),
+      child: SafeArea(
         child: Column(
           children: [
-            const Gap(40),
-            Stack(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Container(
-                    height: 24,
-                    width: 24,
-                    decoration: BoxDecoration(
-                      color: AppColor.white,
-                      borderRadius: BorderRadius.circular(4),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: const Offset(0, 0),
-                          blurRadius: 2,
-                          spreadRadius: 0,
-                          color: AppColor.gray,
-                        ),
-                      ],
-                    ),
-                    child: Icon(
-                      CupertinoIcons.arrow_left,
-                      size: 16,
-                      color: AppColor.black300,
+            // Header
+            Container(
+              height: 60,
+              width: width,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              color: AppColor.white,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        color: AppColor.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(0, 2),
+                            blurRadius: 6,
+                            color: AppColor.gray.withOpacity(0.2),
+                          ),
+                        ],
+                      ),
+                      child: Icon(
+                        CupertinoIcons.arrow_left,
+                        size: 24,
+                        color: AppColor.black300,
+                      ),
                     ),
                   ),
-                ),
-                Center(
-                  child: Text(
+                  Text(
                     'Scan QR Code',
                     style: TextStyle(
                       color: AppColor.black300,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(width: 40), // Placeholder for alignment
+                ],
+              ),
             ),
-            const Gap(30),
+            const Gap(20),
+            // QR Scanner
             Expanded(
               child: Container(
-                width: wid,
+                width: width,
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                    color: AppColor.white,
-                    borderRadius: BorderRadius.circular(4)),
-                padding: const EdgeInsets.all(20),
+                  color: AppColor.white,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 12,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
                 child: Column(
                   children: [
-                    Text(
-                      'My QR Code',
-                      style: TextStyle(color: AppColor.black300),
-                    ),
-                    const Gap(30),
-                    CircleAvatar(
-                      radius: 50,
-                    ),
-                    const Gap(20),
-                    Text(
-                      'John Lawis',
-                      style: TextStyle(
-                          color: AppColor.black300,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const Gap(40),
                     Container(
-                      height: 180,
-                      width: 180,
-                      child: MobileScanner(
-                        onDetect: (barcodes) {
-                          if (!isCodeScanned) {
+                      height: height * 0.35,
+                      width: width * 0.85,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppColor.primary,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.transparent,
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: MobileScanner(
+                          onDetect: (barcodes) {
+                            // Handle detected barcode here
                             String code = barcodes.raw ?? '---';
                             print(code);
-                          }
-                        },
-                      ),
-                    ),
-                    const Gap(10),
-                    Text(
-                      'Scannig the QR Code...',
-                      style: TextStyle(
-                        color: AppColor.black300,
-                        fontWeight: FontWeight.bold,
+                          },
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     const Gap(20),
+                    // Instructions
                     Text(
-                      'Align QR Code within frame to scan\nwhich is in right side of camera ',
+                      'Align the QR code within the frame to scan.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: AppColor.gray,
+                        color: AppColor.black300,
                         fontWeight: FontWeight.w500,
-                        fontSize: 12,
+                        fontSize: 14,
                       ),
                     ),
-                    const Gap(40),
+                    const Gap(20),
+                    // Decorative Elements
                     Container(
-                      height: 50,
-                      width: wid / 1.6,
+                      height: 100,
+                      width: width * 0.9,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: AppColor.primary,
+                        borderRadius: BorderRadius.circular(16),
+                        gradient: LinearGradient(
+                          colors: [
+                            AppColor.primary.withOpacity(0.2),
+                            AppColor.white
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
                       ),
                       alignment: Alignment.center,
                       child: Text(
-                        'Scannig...',
+                        'Keep your camera steady for best results',
                         style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                          color: AppColor.black300,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    const Gap(20),
+                    // Small Button
+                    ElevatedButton(
+                      onPressed: () {
+                        // Add any action if needed
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColor.primary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      ),
+                      child: Text(
+                        'Scan Now',
+                        style: TextStyle(
+                          color: AppColor.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],

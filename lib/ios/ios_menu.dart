@@ -74,14 +74,16 @@ class _ios_menuState extends State<ios_menu> {
                         height: 36,
                         width: 79,
                         decoration: BoxDecoration(
-                            border: Border.all(color: AppColor.primary),
-                            borderRadius: BorderRadius.circular(10)),
+                          border: Border.all(color: AppColor.primary),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         child: Center(
-                            child: Text(
-                          "About",
-                          style: GoogleFonts.openSans(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        )),
+                          child: Text(
+                            "About",
+                            style: GoogleFonts.openSans(
+                                fontSize: 14, fontWeight: FontWeight.w600),
+                          ),
+                        ),
                       ),
                       Container(
                         height: 36,
@@ -104,11 +106,12 @@ class _ios_menuState extends State<ios_menu> {
                             border: Border.all(color: AppColor.primary),
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
-                            child: Text(
-                          "Offers",
-                          style: GoogleFonts.openSans(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        )),
+                          child: Text(
+                            "Offers",
+                            style: GoogleFonts.openSans(
+                                fontSize: 14, fontWeight: FontWeight.w600),
+                          ),
+                        ),
                       ),
                       Container(
                         height: 36,
@@ -117,11 +120,12 @@ class _ios_menuState extends State<ios_menu> {
                             border: Border.all(color: AppColor.primary),
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
-                            child: Text(
-                          "Gallary",
-                          style: GoogleFonts.openSans(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        )),
+                          child: Text(
+                            "Gallary",
+                            style: GoogleFonts.openSans(
+                                fontSize: 14, fontWeight: FontWeight.w600),
+                          ),
+                        ),
                       ),
                     ],
                   ),

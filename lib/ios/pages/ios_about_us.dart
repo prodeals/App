@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/colors.dart';
@@ -35,7 +36,9 @@ class _ios_about_usState extends State<ios_about_us> {
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.back();
+                      },
                       child: Container(
                         height: 30,
                         width: 30,
@@ -69,9 +72,12 @@ class _ios_about_usState extends State<ios_about_us> {
                 ),
               ),
               const Gap(20),
-              const Text(
+              Text(
                 "About Us",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.black300),
               ),
               const Gap(20),
               const Text(

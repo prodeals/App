@@ -79,34 +79,20 @@ class ios_cart extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       child: Slidable(
                         closeOnScroll: true,
-                        secondaryActions: [
-                          IconSlideAction(
-                            caption: 'Delete',
-                            foregroundColor: Colors.red,
-                            color: Colors.red.withOpacity(0.3),
-                            icon: Icons.delete,
-                            onTap: () {},
-                            // onTap: () => _showSnackBar('Delete'),
-                          ),
-                        ],
-                        // endActionPane: ActionPane(
-                        //   dragDismissible: true,
-                        //   motion: const StretchMotion(),
-                        //   children: [
-                        //     SlidableAction(
-                        //       backgroundColor: Colors.red,
-                        //       icon: Icons.delete,
-                        //       label: 'Delete',
-                        //       borderRadius: BorderRadius.circular(10),
-                        //       spacing: 10,
-                        //       flex: 3,
-                        //       padding:
-                        //           EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                        //       onPressed: (context) {},
-                        //     ),
-                        //   ],
-                        // ),
-                        actionPane: const SlidableDrawerActionPane(),
+                        endActionPane: ActionPane(
+                          motion: const ScrollMotion(),
+                          children: [
+                            SlidableAction(
+                              onPressed: (context) {
+                                // Your delete action here
+                              },
+                              backgroundColor: Colors.red.withOpacity(0.3),
+                              foregroundColor: Colors.red,
+                              icon: Icons.delete,
+                              label: 'Delete',
+                            ),
+                          ],
+                        ),
                         child: buildListTile(order),
                       ),
                     );
@@ -142,8 +128,7 @@ class ios_cart extends StatelessWidget {
                                   child: Card(
                                     margin: const EdgeInsets.all(0),
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 14.0),
+                                      padding: const EdgeInsets.only(left: 14.0),
                                       child: TextField(
                                         decoration: InputDecoration(
                                           border: InputBorder.none,
@@ -355,95 +340,27 @@ class ios_cart extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(image: AssetImage(order['image']))),
         ),
-        title: Text(order['name']),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('${order['quantity']} x ₹ ${order['prize']}'),
-            Container(
-              height: 40,
-              width: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: AppColor.gray.withOpacity(0.0),
-              ),
-              padding: EdgeInsets.all(6),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      color: AppColor.white.withOpacity(0.1),
-                      border: Border.all(color: AppColor.gray),
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 2,
-                          offset: Offset(2, 2),
-                        ),
-                      ],
-                    ),
-                    child: Icon(
-                      Icons.remove,
-                      color: AppColor.gray,
-                      size: 18,
-                    ),
-                  ),
-                  Text('${order['quantity']}'),
-                  Container(
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      color: AppColor.white.withOpacity(0.1),
-                      border: Border.all(color: Colors.black),
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 2,
-                          offset: Offset(2, 2),
-                        ),
-                      ],
-                    ),
-                    child: Icon(
-                      Icons.add,
-                      size: 18,
-                      color: AppColor.black300,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+        title: Text(
+          order['name'],
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(
+          order['price'],
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-                width: 46,
-                height: 25,
-                decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 202, 153, 4),
-                    borderRadius: BorderRadius.circular(5)),
-                child: const Row(
-                  children: [
-                    Icon(
-                      Icons.star,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    Text(
-                      '4.7 ',
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
-                )),
             Text(
-              '\$ ${order['prize'] * order['quantity']}',
-              style: TextStyle(fontSize: 18),
+              'x${order['quantity']}',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Gap(10),
+            Text(
+              order['size'],
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: AppColor.gray,
+              ),
             ),
           ],
         ),

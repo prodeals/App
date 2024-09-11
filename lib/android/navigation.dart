@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pro_deals1/android/QR.dart';
 import 'package:pro_deals1/android/qr_scanner.dart';
 
 import '../../utils/colors.dart';
@@ -21,6 +18,19 @@ class _navigationState extends State<navigation> {
   int currentPageIndex = 0;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    // showDialog(
+    //   context: context,
+    //   builder: (context) => AlertDialog(
+    //     content: popupscreen(),
+    //   ),
+    // );
+  }
+
+  @override
   Widget build(BuildContext context) {
     PageController controller = PageController(
       initialPage: currentPageIndex,
@@ -35,7 +45,7 @@ class _navigationState extends State<navigation> {
           });
         },
         controller: controller,
-        children: const [home_page(), cart(), qr_scanner(), profile_page()],
+        children: const [home_page(), Cart(), qr_scanner(), ProfilePage()],
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: AppColor.primary,

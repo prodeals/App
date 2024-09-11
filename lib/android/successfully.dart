@@ -22,7 +22,7 @@ class _successfullyState extends State<successfully> {
         centerTitle: true,
         leading: IconButton(
             onPressed: () {
-              Get.toNamed('/verify');
+              Get.back();
             },
             icon: const Icon(Icons.arrow_back)),
         backgroundColor: const Color.fromARGB(255, 214, 170, 38),
@@ -51,7 +51,7 @@ class _successfullyState extends State<successfully> {
             GestureDetector(
               onTap: () {
                 Get.offNamedUntil(
-                  '/deshborad',
+                  '/dashboard',
                   (route) => false,
                 );
               },

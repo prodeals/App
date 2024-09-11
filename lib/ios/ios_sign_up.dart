@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_deals1/utils/colors.dart';
 
+import '../api/register.dart';
+
 class ios_sign_up extends StatelessWidget {
   ios_sign_up({super.key});
 
@@ -199,22 +201,27 @@ class ios_sign_up extends StatelessWidget {
                             onTap: () async {
                               var key = formKey.currentState!;
                               if (key.validate() == true) {
-                                await FirebaseAuth.instance.verifyPhoneNumber(
-                                  verificationCompleted:
-                                      (PhoneAuthCredential credential) {},
-                                  verificationFailed:
-                                      (FirebaseAuthException ex) {},
-                                  codeSent: (String code, int? resendCode) {
-                                    Get.toNamed('/ios_otp', arguments: {
-                                      'code': code,
-                                      'username': user.text.toString(),
-                                      'phone': number.text.toString(),
-                                      'password': password.text.toString(),
-                                    });
-                                  },
-                                  codeAutoRetrievalTimeout: (verificationId) {},
-                                  phoneNumber: '+91 ${number.text.toString()}',
-                                );
+                                // await FirebaseAuth.instance.verifyPhoneNumber(
+                                //   verificationCompleted:
+                                //       (PhoneAuthCredential credential) {},
+                                //   verificationFailed:
+                                //       (FirebaseAuthException ex) {},
+                                //   codeSent: (String code, int? resendCode) {
+                                //     Get.toNamed('/ios_otp', arguments: {
+                                //       'code': code,
+                                //       'username': user.text.toString(),
+                                //       'phone': number.text.toString(),
+                                //       'password': password.text.toString(),
+                                //     });
+                                //   },
+                                //   codeAutoRetrievalTimeout: (verificationId) {},
+                                //   phoneNumber: '+91 ${number.text.toString()}',
+                                // );
+                                await registerUser(
+                                    userName: user.text.toString(),
+                                    email: 'kenilkenil425@gmail.com',
+                                    phone: number.text.toString(),
+                                    password: password.text.toString());
                                 print('valid');
                               }
                             },

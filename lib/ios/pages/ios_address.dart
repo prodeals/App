@@ -46,10 +46,7 @@ class _ios_addressState extends State<ios_address> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => ios_create_account()));
+                        Get.back();
                       },
                       icon: const Icon(
                         Icons.arrow_back,

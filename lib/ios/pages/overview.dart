@@ -7,7 +7,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../../android/Area.dart';
-import '../../android/bar chart .dart';
+import '../../android/barchart.dart';
 
 class overview_ios extends StatefulWidget {
   const overview_ios({super.key});
@@ -462,7 +462,7 @@ class _overview_iosState extends State<overview_ios> {
                                 //                   ),
                                 //   ],
                                 // ),
-                                const barchart(),
+                                const BarChartWidget(),
                               ],
                             )),
                       ),

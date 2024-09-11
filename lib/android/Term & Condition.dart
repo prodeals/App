@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:pro_deals1/utils/colors.dart';
 
 class Term_condition extends StatefulWidget {
   const Term_condition({super.key});
@@ -18,13 +20,7 @@ class _Term_conditionState extends State<Term_condition> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        leading: IconButton(
-            onPressed: () {
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (_) => upload_store()));
-            },
-            icon: const Icon(Icons.arrow_back)),
-        backgroundColor: const Color.fromARGB(255, 214, 170, 38),
+        backgroundColor: AppColor.primary,
       ),
       body: const SingleChildScrollView(
         child: Padding(
@@ -54,9 +50,10 @@ class _Term_conditionState extends State<Term_condition> {
               Text(
                 "They described who they were in a single line on the headings. They welcome their visitors by personalizing their website with a refreshing visual.",
                 style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey,
+                ),
               ),
               Gap(10),
               Text(
@@ -80,9 +77,10 @@ class _Term_conditionState extends State<Term_condition> {
               Text(
                 "They described who they were in a single line on the headings. They welcome their visitors by personalizing their website with a refreshing visual.",
                 style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey,
+                ),
               ),
             ],
           ),
